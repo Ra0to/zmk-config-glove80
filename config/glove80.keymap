@@ -20,6 +20,7 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/rgb.h>
 
+#pragma region Layers definitions
 /* Automatically generated layer name #define */
 #define LAYER_Engrammer 0
 #define LAYER_Engram 1
@@ -53,6 +54,7 @@
 #define LAYER_Factory 29
 #define LAYER_Lower 30
 #define LAYER_Magic 31
+#pragma endregion Layers definitions
 
 /* To deal with the situation where there is no Lower layer, to keep &lower happy */
 #ifndef LAYER_Lower
@@ -62,7 +64,7 @@
 /* Custom Device-tree */
 
 
-
+#pragma region Glove80 standard behaviours and macros
 /* Glove80 system behavior & macros */
 / {
     behaviors {
@@ -207,7 +209,9 @@
         };
     };
 };
+#pragma endregion Glove80 standard behaviours and macros
 
+#pragma region key position definitions
 /* #define for key positions */
 #define POS_LH_T1 52
 #define POS_LH_T2 53
@@ -289,6 +293,7 @@
 #define POS_RH_C6R4 45
 #define POS_RH_C6R5 63
 #define POS_RH_C6R6 79
+#pragma endregion key position definitions
 
 /* Custom Defined Behaviors */
 / {
@@ -359,6 +364,8 @@
 //#define OPERATING_SYSTEM 'M' // macos
 #define OPERATING_SYSTEM 'W' // windows
 #endif
+
+#pragma region shortcuts definitions
 #if OPERATING_SYSTEM == 'M'
     #define _C      LG
     #define _A_TAB  LGUI
@@ -393,7 +400,9 @@
 #define _FIND       _C(F)
 #define _FIND_NEXT  _C(G)
 #define _FIND_PREV  _C(LS(G))
+#pragma endregion shortcuts definitions
 
+#pragma region keys definitions for USE_NUMPAD_KEYCODES
 //
 // USE_NUMPAD_KEYCODES puts `KP_*` keycodes into the Number layer.
 //
@@ -436,7 +445,9 @@
 #define _KP_EQUAL EQUAL
 #define _KP_ENTER ENTER
 #endif
+#pragma endregion keys definitions for USE_NUMPAD_KEYCODES
 
+#pragma region specific symbol overrides
 //
 // Glove80 specific symbol overrides to support non "en-US" locales
 //
@@ -482,7 +493,9 @@
 #define TILDE LS(GRAVE)
 #undef  UNDER
 #define UNDER LS(MINUS)
+#pragma endregion specific symbol overrides
 
+#pragma region base layers alpha configuration
 //
 // Keymap specific knowledge of the base layer's alpha + ZMK layout
 //
@@ -1224,6 +1237,7 @@
 #define KEY_RH_C5R6 RPAR
 #define KEY_RH_C6R6 0
 #endif
+#pragma endregion base layers alpha configuration
 
 combos {
     compatible = "zmk,combos";
@@ -1254,7 +1268,7 @@ combos {
 };
 
 behaviors {
-
+#pragma region homerow modes fingers configuration
     //////////////////////////////////////////////////////////////////////////
     //
     // Miryoku layers and home row mods (ported from my QMK endgame)
@@ -1334,7 +1348,9 @@ behaviors {
     #ifndef RIGHT_INDEX_MOD
     #define RIGHT_INDEX_MOD INDEX_FINGER_MOD
     #endif
+#pragma endregion homerow modes fingers configuration
 
+#pragma region homwrow modes timing configuration
     //
     // HOMEY_HOLDING_TYPE defines the flavor of ZMK hold-tap behavior to use
     // for the pinky, ring, and middle fingers (which are assigned to Super,
@@ -1542,7 +1558,9 @@ behaviors {
     #ifndef SPACE_REPEAT_DECAY
     #define SPACE_REPEAT_DECAY 150
     #endif
+#pragma endregion homwrow modes timing configuration
 
+#pragma region keys setup
     //
     // Glove80 key positions index for positional hold-tap
     // - https://discord.com/channels/877392805654306816/937645688244826154/1066713913351221248
@@ -1601,7 +1619,9 @@ behaviors {
     #define LeftPlainKey  kp LEFT_PLAIN_KEY
     #define RightPlainKey kp RIGHT_PLAIN_KEY
     #endif
+#pragma endregion keys setup
 
+#pragma region homerow modes defalut timings
     //
     // Home row mods with bilateral combinations support
     //
@@ -1857,6 +1877,9 @@ behaviors {
 #ifndef LEFT_PINKY_REPEAT_DECAY
 #define LEFT_PINKY_REPEAT_DECAY PINKY_REPEAT_DECAY
 #endif
+#pragma endregion homerow modes defalut timings
+
+#pragma region left pinky config
     left_pinky: homey_left_pinky {
         compatible = "zmk,behavior-hold-tap";
         flavor = LEFT_PINKY_HOLDING_TYPE;
@@ -1931,6 +1954,9 @@ behaviors {
     #define LeftPinky_layer6(key) left_pinky LEFT_PINKY_MOD key
     #define LeftPinky_layer7(key) left_pinky LEFT_PINKY_MOD key
     #define LeftPinky_layer8(key) left_pinky LEFT_PINKY_MOD key
+#pragma endregion left pinky config
+
+#pragma region right pinky config
 #ifndef RIGHT_PINKY_HOLDING_TYPE
 #define RIGHT_PINKY_HOLDING_TYPE PINKY_HOLDING_TYPE
 #endif
@@ -2017,6 +2043,9 @@ behaviors {
     #define RightPinky_layer6(key) right_pinky RIGHT_PINKY_MOD key
     #define RightPinky_layer7(key) right_pinky RIGHT_PINKY_MOD key
     #define RightPinky_layer8(key) right_pinky RIGHT_PINKY_MOD key
+#pragma endregion right pinky config
+
+#pragma region left ring config
 #ifndef LEFT_RING1_HOLDING_TYPE
 #define LEFT_RING1_HOLDING_TYPE RING1_HOLDING_TYPE
 #endif
@@ -2103,6 +2132,9 @@ behaviors {
     #define LeftRing1_layer6(key) left_ring1 LEFT_RING1_MOD key
     #define LeftRing1_layer7(key) left_ring1 LEFT_RING1_MOD key
     #define LeftRing1_layer8(key) left_ring1 LEFT_RING1_MOD key
+#pragma endregion left ring config
+
+#pragma region right ring config
 #ifndef RIGHT_RING1_HOLDING_TYPE
 #define RIGHT_RING1_HOLDING_TYPE RING1_HOLDING_TYPE
 #endif
@@ -2189,6 +2221,9 @@ behaviors {
     #define RightRing1_layer6(key) right_ring1 RIGHT_RING1_MOD key
     #define RightRing1_layer7(key) right_ring1 RIGHT_RING1_MOD key
     #define RightRing1_layer8(key) right_ring1 RIGHT_RING1_MOD key
+#pragma endregion right ring config
+
+#pragma region left ring2 config
 #ifndef LEFT_RING2_HOLDING_TYPE
 #define LEFT_RING2_HOLDING_TYPE RING2_HOLDING_TYPE
 #endif
@@ -2275,6 +2310,9 @@ behaviors {
     #define LeftRing2_layer6(key) left_ring2 LEFT_RING2_MOD key
     #define LeftRing2_layer7(key) left_ring2 LEFT_RING2_MOD key
     #define LeftRing2_layer8(key) left_ring2 LEFT_RING2_MOD key
+#pragma endregion left ring2 config
+
+#pragma region right ring2 config
 #ifndef RIGHT_RING2_HOLDING_TYPE
 #define RIGHT_RING2_HOLDING_TYPE RING2_HOLDING_TYPE
 #endif
@@ -2361,6 +2399,9 @@ behaviors {
     #define RightRing2_layer6(key) right_ring2 RIGHT_RING2_MOD key
     #define RightRing2_layer7(key) right_ring2 RIGHT_RING2_MOD key
     #define RightRing2_layer8(key) right_ring2 RIGHT_RING2_MOD key
+#pragma endregion right ring2 config
+
+#pragma region left middy config
 #ifndef LEFT_MIDDY_HOLDING_TYPE
 #define LEFT_MIDDY_HOLDING_TYPE MIDDY_HOLDING_TYPE
 #endif
@@ -2447,6 +2488,9 @@ behaviors {
     #define LeftMiddy_layer6(key) left_middy LEFT_MIDDY_MOD key
     #define LeftMiddy_layer7(key) left_middy LEFT_MIDDY_MOD key
     #define LeftMiddy_layer8(key) left_middy LEFT_MIDDY_MOD key
+#pragma endregion left middy config
+
+#pragma region right middy config
 #ifndef RIGHT_MIDDY_HOLDING_TYPE
 #define RIGHT_MIDDY_HOLDING_TYPE MIDDY_HOLDING_TYPE
 #endif
@@ -2533,6 +2577,9 @@ behaviors {
     #define RightMiddy_layer6(key) right_middy RIGHT_MIDDY_MOD key
     #define RightMiddy_layer7(key) right_middy RIGHT_MIDDY_MOD key
     #define RightMiddy_layer8(key) right_middy RIGHT_MIDDY_MOD key
+#pragma endregion right middy config
+
+#pragma region left index config
 #ifndef LEFT_INDEX_HOLDING_TYPE
 #define LEFT_INDEX_HOLDING_TYPE INDEX_HOLDING_TYPE
 #endif
@@ -2619,6 +2666,10 @@ behaviors {
     #define LeftIndex_layer6(key) left_index LEFT_INDEX_MOD key
     #define LeftIndex_layer7(key) left_index LEFT_INDEX_MOD key
     #define LeftIndex_layer8(key) left_index LEFT_INDEX_MOD key
+#pragma endregion left index config
+    
+
+#pragma region right index config
 #ifndef RIGHT_INDEX_HOLDING_TYPE
 #define RIGHT_INDEX_HOLDING_TYPE INDEX_HOLDING_TYPE
 #endif
@@ -2705,6 +2756,8 @@ behaviors {
     #define RightIndex_layer6(key) right_index RIGHT_INDEX_MOD key
     #define RightIndex_layer7(key) right_index RIGHT_INDEX_MOD key
     #define RightIndex_layer8(key) right_index RIGHT_INDEX_MOD key
+#pragma endregion right index config
+#pragma region left ring pinky config
 #ifndef LEFT_RING1_PINKY_HOLDING_TYPE
 #define LEFT_RING1_PINKY_HOLDING_TYPE LEFT_RING1_CHORD_HOLDING_TYPE
 #endif
@@ -2740,6 +2793,8 @@ behaviors {
         bindings = <&kp>, <&left_ring1_tap>;
     };
     #define LeftRing1Pinky left_ring1_pinky_bilateral LEFT_PINKY_MOD LEFT_PINKY_KEY
+#pragma endregion left ring pinky config
+#pragma region left ring2 pinky config
 #ifndef LEFT_RING2_PINKY_HOLDING_TYPE
 #define LEFT_RING2_PINKY_HOLDING_TYPE LEFT_RING2_CHORD_HOLDING_TYPE
 #endif
@@ -2775,6 +2830,8 @@ behaviors {
         bindings = <&kp>, <&left_ring2_tap>;
     };
     #define LeftRing2Pinky left_ring2_pinky_bilateral LEFT_PINKY_MOD LEFT_PINKY_KEY
+#pragma endregion left ring2 pinky config
+#pragma region left middy pinky config
 #ifndef LEFT_MIDDY_PINKY_HOLDING_TYPE
 #define LEFT_MIDDY_PINKY_HOLDING_TYPE LEFT_MIDDY_CHORD_HOLDING_TYPE
 #endif
@@ -2810,6 +2867,8 @@ behaviors {
         bindings = <&kp>, <&left_middy_tap>;
     };
     #define LeftMiddyPinky left_middy_pinky_bilateral LEFT_PINKY_MOD LEFT_PINKY_KEY
+#pragma endregion left middy pinky config
+#pragma region left index pinky config
 #ifndef LEFT_INDEX_PINKY_HOLDING_TYPE
 #define LEFT_INDEX_PINKY_HOLDING_TYPE LEFT_INDEX_CHORD_HOLDING_TYPE
 #endif
@@ -2845,6 +2904,8 @@ behaviors {
         bindings = <&kp>, <&left_index_tap>;
     };
     #define LeftIndexPinky left_index_pinky_bilateral LEFT_PINKY_MOD LEFT_PINKY_KEY
+#pragma endregion left index pinky config
+#pragma region right ring1 pinky config
 #ifndef RIGHT_RING1_PINKY_HOLDING_TYPE
 #define RIGHT_RING1_PINKY_HOLDING_TYPE RIGHT_RING1_CHORD_HOLDING_TYPE
 #endif
@@ -2880,6 +2941,8 @@ behaviors {
         bindings = <&kp>, <&right_ring1_tap>;
     };
     #define RightRing1Pinky right_ring1_pinky_bilateral RIGHT_PINKY_MOD RIGHT_PINKY_KEY
+#pragma endregion right ring1 pinky config
+#pragma region right ring2 pinky config
 #ifndef RIGHT_RING2_PINKY_HOLDING_TYPE
 #define RIGHT_RING2_PINKY_HOLDING_TYPE RIGHT_RING2_CHORD_HOLDING_TYPE
 #endif
@@ -2915,6 +2978,8 @@ behaviors {
         bindings = <&kp>, <&right_ring2_tap>;
     };
     #define RightRing2Pinky right_ring2_pinky_bilateral RIGHT_PINKY_MOD RIGHT_PINKY_KEY
+#pragma endregion right ring2 pinky config
+#pragma region right middy pinky config
 #ifndef RIGHT_MIDDY_PINKY_HOLDING_TYPE
 #define RIGHT_MIDDY_PINKY_HOLDING_TYPE RIGHT_MIDDY_CHORD_HOLDING_TYPE
 #endif
@@ -2950,6 +3015,8 @@ behaviors {
         bindings = <&kp>, <&right_middy_tap>;
     };
     #define RightMiddyPinky right_middy_pinky_bilateral RIGHT_PINKY_MOD RIGHT_PINKY_KEY
+#pragma endregion right middy pinky config
+#pragma region right index pinky config
 #ifndef RIGHT_INDEX_PINKY_HOLDING_TYPE
 #define RIGHT_INDEX_PINKY_HOLDING_TYPE RIGHT_INDEX_CHORD_HOLDING_TYPE
 #endif
@@ -2985,6 +3052,8 @@ behaviors {
         bindings = <&kp>, <&right_index_tap>;
     };
     #define RightIndexPinky right_index_pinky_bilateral RIGHT_PINKY_MOD RIGHT_PINKY_KEY
+#pragma endregion right index pinky config
+#pragma region left ring1 config
 #ifndef LEFT_PINKY_RING1_HOLDING_TYPE
 #define LEFT_PINKY_RING1_HOLDING_TYPE LEFT_PINKY_CHORD_HOLDING_TYPE
 #endif
@@ -3020,6 +3089,8 @@ behaviors {
         bindings = <&kp>, <&left_pinky_tap>;
     };
     #define LeftPinkyRing1 left_pinky_ring1_bilateral LEFT_RING1_MOD LEFT_RING1_KEY
+#pragma endregion left ring1 config
+#pragma region ring2 ring1 config
 #ifndef LEFT_RING2_RING1_HOLDING_TYPE
 #define LEFT_RING2_RING1_HOLDING_TYPE LEFT_RING2_CHORD_HOLDING_TYPE
 #endif
@@ -3055,6 +3126,8 @@ behaviors {
         bindings = <&kp>, <&left_ring2_tap>;
     };
     #define LeftRing2Ring1 left_ring2_ring1_bilateral LEFT_RING1_MOD LEFT_RING1_KEY
+#pragma endregion ring2 ring1 config
+#pragma region left middy ring1 config
 #ifndef LEFT_MIDDY_RING1_HOLDING_TYPE
 #define LEFT_MIDDY_RING1_HOLDING_TYPE LEFT_MIDDY_CHORD_HOLDING_TYPE
 #endif
@@ -3090,6 +3163,8 @@ behaviors {
         bindings = <&kp>, <&left_middy_tap>;
     };
     #define LeftMiddyRing1 left_middy_ring1_bilateral LEFT_RING1_MOD LEFT_RING1_KEY
+#pragma endregion left middy ring1 config
+#pragma region left index ring1 config
 #ifndef LEFT_INDEX_RING1_HOLDING_TYPE
 #define LEFT_INDEX_RING1_HOLDING_TYPE LEFT_INDEX_CHORD_HOLDING_TYPE
 #endif
@@ -3125,6 +3200,8 @@ behaviors {
         bindings = <&kp>, <&left_index_tap>;
     };
     #define LeftIndexRing1 left_index_ring1_bilateral LEFT_RING1_MOD LEFT_RING1_KEY
+#pragma endregion left index ring1 config
+#pragma region right pinky ring1 config
 #ifndef RIGHT_PINKY_RING1_HOLDING_TYPE
 #define RIGHT_PINKY_RING1_HOLDING_TYPE RIGHT_PINKY_CHORD_HOLDING_TYPE
 #endif
@@ -3160,6 +3237,8 @@ behaviors {
         bindings = <&kp>, <&right_pinky_tap>;
     };
     #define RightPinkyRing1 right_pinky_ring1_bilateral RIGHT_RING1_MOD RIGHT_RING1_KEY
+#pragma endregion right pinky ring1 config
+#pragma region right ring2 ring1 config
 #ifndef RIGHT_RING2_RING1_HOLDING_TYPE
 #define RIGHT_RING2_RING1_HOLDING_TYPE RIGHT_RING2_CHORD_HOLDING_TYPE
 #endif
@@ -3195,6 +3274,8 @@ behaviors {
         bindings = <&kp>, <&right_ring2_tap>;
     };
     #define RightRing2Ring1 right_ring2_ring1_bilateral RIGHT_RING1_MOD RIGHT_RING1_KEY
+#pragma endregion right ring2 ring1 config
+#pragma region right middy ring1 config
 #ifndef RIGHT_MIDDY_RING1_HOLDING_TYPE
 #define RIGHT_MIDDY_RING1_HOLDING_TYPE RIGHT_MIDDY_CHORD_HOLDING_TYPE
 #endif
@@ -3230,6 +3311,8 @@ behaviors {
         bindings = <&kp>, <&right_middy_tap>;
     };
     #define RightMiddyRing1 right_middy_ring1_bilateral RIGHT_RING1_MOD RIGHT_RING1_KEY
+#pragma endregion right middy ring1 config
+#pragma region right index ring1 config
 #ifndef RIGHT_INDEX_RING1_HOLDING_TYPE
 #define RIGHT_INDEX_RING1_HOLDING_TYPE RIGHT_INDEX_CHORD_HOLDING_TYPE
 #endif
@@ -3265,6 +3348,8 @@ behaviors {
         bindings = <&kp>, <&right_index_tap>;
     };
     #define RightIndexRing1 right_index_ring1_bilateral RIGHT_RING1_MOD RIGHT_RING1_KEY
+#pragma endregion right index ring1 config
+#pragma region left pinky ring2 config
 #ifndef LEFT_PINKY_RING2_HOLDING_TYPE
 #define LEFT_PINKY_RING2_HOLDING_TYPE LEFT_PINKY_CHORD_HOLDING_TYPE
 #endif
@@ -3300,6 +3385,8 @@ behaviors {
         bindings = <&kp>, <&left_pinky_tap>;
     };
     #define LeftPinkyRing2 left_pinky_ring2_bilateral LEFT_RING2_MOD LEFT_RING2_KEY
+#pragma endregion left pinky ring2 config
+#pragma region left ring1 ring2 config
 #ifndef LEFT_RING1_RING2_HOLDING_TYPE
 #define LEFT_RING1_RING2_HOLDING_TYPE LEFT_RING1_CHORD_HOLDING_TYPE
 #endif
@@ -3335,6 +3422,8 @@ behaviors {
         bindings = <&kp>, <&left_ring1_tap>;
     };
     #define LeftRing1Ring2 left_ring1_ring2_bilateral LEFT_RING2_MOD LEFT_RING2_KEY
+#pragma endregion left ring1 ring2 config
+#pragma region left middy ring2 config
 #ifndef LEFT_MIDDY_RING2_HOLDING_TYPE
 #define LEFT_MIDDY_RING2_HOLDING_TYPE LEFT_MIDDY_CHORD_HOLDING_TYPE
 #endif
@@ -3370,6 +3459,8 @@ behaviors {
         bindings = <&kp>, <&left_middy_tap>;
     };
     #define LeftMiddyRing2 left_middy_ring2_bilateral LEFT_RING2_MOD LEFT_RING2_KEY
+#pragma endregion left middy ring2 config
+#pragma region left index ring2 config
 #ifndef LEFT_INDEX_RING2_HOLDING_TYPE
 #define LEFT_INDEX_RING2_HOLDING_TYPE LEFT_INDEX_CHORD_HOLDING_TYPE
 #endif
@@ -3405,6 +3496,8 @@ behaviors {
         bindings = <&kp>, <&left_index_tap>;
     };
     #define LeftIndexRing2 left_index_ring2_bilateral LEFT_RING2_MOD LEFT_RING2_KEY
+#pragma endregion left index ring2 config
+#pragma region right pinky ring2 config
 #ifndef RIGHT_PINKY_RING2_HOLDING_TYPE
 #define RIGHT_PINKY_RING2_HOLDING_TYPE RIGHT_PINKY_CHORD_HOLDING_TYPE
 #endif
@@ -3440,6 +3533,8 @@ behaviors {
         bindings = <&kp>, <&right_pinky_tap>;
     };
     #define RightPinkyRing2 right_pinky_ring2_bilateral RIGHT_RING2_MOD RIGHT_RING2_KEY
+#pragma endregion right pinky ring2 config
+#pragma region right ring1 ring2 config
 #ifndef RIGHT_RING1_RING2_HOLDING_TYPE
 #define RIGHT_RING1_RING2_HOLDING_TYPE RIGHT_RING1_CHORD_HOLDING_TYPE
 #endif
@@ -3475,6 +3570,8 @@ behaviors {
         bindings = <&kp>, <&right_ring1_tap>;
     };
     #define RightRing1Ring2 right_ring1_ring2_bilateral RIGHT_RING2_MOD RIGHT_RING2_KEY
+#pragma endregion right ring1 ring2 config
+#pragma region right middy ring2 config
 #ifndef RIGHT_MIDDY_RING2_HOLDING_TYPE
 #define RIGHT_MIDDY_RING2_HOLDING_TYPE RIGHT_MIDDY_CHORD_HOLDING_TYPE
 #endif
@@ -3510,6 +3607,8 @@ behaviors {
         bindings = <&kp>, <&right_middy_tap>;
     };
     #define RightMiddyRing2 right_middy_ring2_bilateral RIGHT_RING2_MOD RIGHT_RING2_KEY
+#pragma endregion right middy ring2 config
+#pragma region right index ring2 config
 #ifndef RIGHT_INDEX_RING2_HOLDING_TYPE
 #define RIGHT_INDEX_RING2_HOLDING_TYPE RIGHT_INDEX_CHORD_HOLDING_TYPE
 #endif
@@ -3545,6 +3644,8 @@ behaviors {
         bindings = <&kp>, <&right_index_tap>;
     };
     #define RightIndexRing2 right_index_ring2_bilateral RIGHT_RING2_MOD RIGHT_RING2_KEY
+#pragma endregion right index ring2 config
+#pragma region left pinky middy config
 #ifndef LEFT_PINKY_MIDDY_HOLDING_TYPE
 #define LEFT_PINKY_MIDDY_HOLDING_TYPE LEFT_PINKY_CHORD_HOLDING_TYPE
 #endif
@@ -3580,6 +3681,8 @@ behaviors {
         bindings = <&kp>, <&left_pinky_tap>;
     };
     #define LeftPinkyMiddy left_pinky_middy_bilateral LEFT_MIDDY_MOD LEFT_MIDDY_KEY
+#pragma endregion left pinky middy config
+#pragma region left ring1 middy config
 #ifndef LEFT_RING1_MIDDY_HOLDING_TYPE
 #define LEFT_RING1_MIDDY_HOLDING_TYPE LEFT_RING1_CHORD_HOLDING_TYPE
 #endif
@@ -3615,6 +3718,8 @@ behaviors {
         bindings = <&kp>, <&left_ring1_tap>;
     };
     #define LeftRing1Middy left_ring1_middy_bilateral LEFT_MIDDY_MOD LEFT_MIDDY_KEY
+#pragma endregion left ring1 middy config
+#pragma region left ring2 middy config
 #ifndef LEFT_RING2_MIDDY_HOLDING_TYPE
 #define LEFT_RING2_MIDDY_HOLDING_TYPE LEFT_RING2_CHORD_HOLDING_TYPE
 #endif
@@ -3650,6 +3755,8 @@ behaviors {
         bindings = <&kp>, <&left_ring2_tap>;
     };
     #define LeftRing2Middy left_ring2_middy_bilateral LEFT_MIDDY_MOD LEFT_MIDDY_KEY
+#pragma endregion left ring2 middy config
+#pragma region left index middy config
 #ifndef LEFT_INDEX_MIDDY_HOLDING_TYPE
 #define LEFT_INDEX_MIDDY_HOLDING_TYPE LEFT_INDEX_CHORD_HOLDING_TYPE
 #endif
@@ -3685,6 +3792,8 @@ behaviors {
         bindings = <&kp>, <&left_index_tap>;
     };
     #define LeftIndexMiddy left_index_middy_bilateral LEFT_MIDDY_MOD LEFT_MIDDY_KEY
+#pragma endregion left index middy config
+#pragma region right pinky middy config
 #ifndef RIGHT_PINKY_MIDDY_HOLDING_TYPE
 #define RIGHT_PINKY_MIDDY_HOLDING_TYPE RIGHT_PINKY_CHORD_HOLDING_TYPE
 #endif
@@ -3720,6 +3829,8 @@ behaviors {
         bindings = <&kp>, <&right_pinky_tap>;
     };
     #define RightPinkyMiddy right_pinky_middy_bilateral RIGHT_MIDDY_MOD RIGHT_MIDDY_KEY
+#pragma endregion right pinky middy config
+#pragma region right ring1 middy config
 #ifndef RIGHT_RING1_MIDDY_HOLDING_TYPE
 #define RIGHT_RING1_MIDDY_HOLDING_TYPE RIGHT_RING1_CHORD_HOLDING_TYPE
 #endif
@@ -3755,6 +3866,8 @@ behaviors {
         bindings = <&kp>, <&right_ring1_tap>;
     };
     #define RightRing1Middy right_ring1_middy_bilateral RIGHT_MIDDY_MOD RIGHT_MIDDY_KEY
+#pragma endregion right ring1 middy config
+#pragma region right ring2 middy config
 #ifndef RIGHT_RING2_MIDDY_HOLDING_TYPE
 #define RIGHT_RING2_MIDDY_HOLDING_TYPE RIGHT_RING2_CHORD_HOLDING_TYPE
 #endif
@@ -3790,6 +3903,8 @@ behaviors {
         bindings = <&kp>, <&right_ring2_tap>;
     };
     #define RightRing2Middy right_ring2_middy_bilateral RIGHT_MIDDY_MOD RIGHT_MIDDY_KEY
+#pragma endregion right ring2 middy config
+#pragma region right index middy config
 #ifndef RIGHT_INDEX_MIDDY_HOLDING_TYPE
 #define RIGHT_INDEX_MIDDY_HOLDING_TYPE RIGHT_INDEX_CHORD_HOLDING_TYPE
 #endif
@@ -3825,6 +3940,8 @@ behaviors {
         bindings = <&kp>, <&right_index_tap>;
     };
     #define RightIndexMiddy right_index_middy_bilateral RIGHT_MIDDY_MOD RIGHT_MIDDY_KEY
+#pragma endregion right index middy config
+#pragma region left pinky index config
 #ifndef LEFT_PINKY_INDEX_HOLDING_TYPE
 #define LEFT_PINKY_INDEX_HOLDING_TYPE LEFT_PINKY_CHORD_HOLDING_TYPE
 #endif
@@ -3860,6 +3977,8 @@ behaviors {
         bindings = <&kp>, <&left_pinky_tap>;
     };
     #define LeftPinkyIndex left_pinky_index_bilateral LEFT_INDEX_MOD LEFT_INDEX_KEY
+#pragma endregion left pinky index config
+#pragma region left ring1 index config
 #ifndef LEFT_RING1_INDEX_HOLDING_TYPE
 #define LEFT_RING1_INDEX_HOLDING_TYPE LEFT_RING1_CHORD_HOLDING_TYPE
 #endif
@@ -3895,6 +4014,8 @@ behaviors {
         bindings = <&kp>, <&left_ring1_tap>;
     };
     #define LeftRing1Index left_ring1_index_bilateral LEFT_INDEX_MOD LEFT_INDEX_KEY
+#pragma endregion left ring1 index config
+#pragma region left ring2 index config
 #ifndef LEFT_RING2_INDEX_HOLDING_TYPE
 #define LEFT_RING2_INDEX_HOLDING_TYPE LEFT_RING2_CHORD_HOLDING_TYPE
 #endif
@@ -3930,6 +4051,8 @@ behaviors {
         bindings = <&kp>, <&left_ring2_tap>;
     };
     #define LeftRing2Index left_ring2_index_bilateral LEFT_INDEX_MOD LEFT_INDEX_KEY
+#pragma endregion left ring2 index config
+#pragma region left middy index config
 #ifndef LEFT_MIDDY_INDEX_HOLDING_TYPE
 #define LEFT_MIDDY_INDEX_HOLDING_TYPE LEFT_MIDDY_CHORD_HOLDING_TYPE
 #endif
@@ -3965,6 +4088,8 @@ behaviors {
         bindings = <&kp>, <&left_middy_tap>;
     };
     #define LeftMiddyIndex left_middy_index_bilateral LEFT_INDEX_MOD LEFT_INDEX_KEY
+#pragma endregion left middy index config
+#pragma region right pinky index config
 #ifndef RIGHT_PINKY_INDEX_HOLDING_TYPE
 #define RIGHT_PINKY_INDEX_HOLDING_TYPE RIGHT_PINKY_CHORD_HOLDING_TYPE
 #endif
@@ -4000,6 +4125,8 @@ behaviors {
         bindings = <&kp>, <&right_pinky_tap>;
     };
     #define RightPinkyIndex right_pinky_index_bilateral RIGHT_INDEX_MOD RIGHT_INDEX_KEY
+#pragma endregion right pinky index config
+#pragma region right ring1 index config
 #ifndef RIGHT_RING1_INDEX_HOLDING_TYPE
 #define RIGHT_RING1_INDEX_HOLDING_TYPE RIGHT_RING1_CHORD_HOLDING_TYPE
 #endif
@@ -4035,6 +4162,8 @@ behaviors {
         bindings = <&kp>, <&right_ring1_tap>;
     };
     #define RightRing1Index right_ring1_index_bilateral RIGHT_INDEX_MOD RIGHT_INDEX_KEY
+#pragma endregion right ring1 index config
+#pragma region right ring2 index config
 #ifndef RIGHT_RING2_INDEX_HOLDING_TYPE
 #define RIGHT_RING2_INDEX_HOLDING_TYPE RIGHT_RING2_CHORD_HOLDING_TYPE
 #endif
@@ -4070,6 +4199,8 @@ behaviors {
         bindings = <&kp>, <&right_ring2_tap>;
     };
     #define RightRing2Index right_ring2_index_bilateral RIGHT_INDEX_MOD RIGHT_INDEX_KEY
+#pragma endregion right ring2 index config
+#pragma region right middy index config
 #ifndef RIGHT_MIDDY_INDEX_HOLDING_TYPE
 #define RIGHT_MIDDY_INDEX_HOLDING_TYPE RIGHT_MIDDY_CHORD_HOLDING_TYPE
 #endif
@@ -4105,6 +4236,7 @@ behaviors {
         bindings = <&kp>, <&right_middy_tap>;
     };
     #define RightMiddyIndex right_middy_index_bilateral RIGHT_INDEX_MOD RIGHT_INDEX_KEY
+#pragma endregion right middy index config
 
     //
     // Key repetition access keys on the index fingers
@@ -4195,6 +4327,7 @@ behaviors {
         mods = <(MOD_LSFT|MOD_RSFT)>;
     };
 
+    #pragma region custom shifted pairs for the Engram
     //
     // Custom shifted pairs for the Engram layout
     // - https://engram.dev/
@@ -4308,6 +4441,7 @@ behaviors {
         bindings = <&kp FSLH>, <&kp BSLH>;
         mods = <(MOD_LSFT|MOD_RSFT)>;
     };
+    #pragma endregion custom shifted pairs for the Engram
 
     //////////////////////////////////////////////////////////////////////////
     //
@@ -4416,6 +4550,7 @@ macros {
             ;
     };
 
+    #pragma region selection macros
     //////////////////////////////////////////////////////////////////////////
     //
     // Approximation of Pascal Getreuer's Select Word macro from QMK
@@ -4517,7 +4652,9 @@ macros {
         tap-ms = <SELECT_WORD_DELAY>;
         bindings = <&kp LS(UP) &kp LS(_HOME)>;
     )
+    #pragma endregion selection macros
 
+#pragma region world layer defines
     //////////////////////////////////////////////////////////////////////////
     //
     // World layer - international characters
@@ -4719,8 +4856,9 @@ macros {
     #elif UNICODE_TARGET_OS == 'W'
         #define COMPOSE_MORPH_MODS MOD_LALT
     #endif
+#pragma endregion world layer defines
 
-
+#pragma region international symbols definitions
     //
     // NOTE: edit the world.yaml file and run `rake` to generate this:
     //
@@ -8257,7 +8395,9 @@ UNICODE_MORPH_MODS
         bindings = <&world_currency_pound>, <&world_currency_generic>;
         mods = <(MOD_RSFT)>;
     };
+#pragma endregion international symbols definitions
 
+#pragma region emoji layer definitions
     //////////////////////////////////////////////////////////////////////////
     //
     // Emoji layer - modern age pictograms
@@ -10419,7 +10559,9 @@ UNICODE_MORPH_MODS
     emoji_hair_style_preset: &emoji_white_hair {};
 #endif
 /*HACK*//{
+#pragma endregion emoji layer definitions
 
+#pragma region mouse keys config
 //////////////////////////////////////////////////////////////////////////
 //
 // Mouse keys (control mouse via keyboard) -- requires PR23 beta firmware:
@@ -10543,6 +10685,7 @@ UNICODE_MORPH_MODS
 /*HACK*//{
 
 };
+#pragma endregion mouse keys config
 
 /* Automatically generated macro definitions */
 / {
