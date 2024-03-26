@@ -1267,9 +1267,21 @@ combos {
         layers = <0 1 2 3 4 5 6 7 8>;
     };
     #endif
+
+    combo_public {
+      timeout-ms = <COMBO_FIRING_DECAY>;
+      key-positions = <POS_RH_C2R3 POS_RH_C5R3 POS_LH_C1R5>;
+      bindings = <&type_public>;
+      layers = <0>;
+    };
 };
 
 behaviors {
+  type_public: type_public {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp P &kp U &kp B &kp L &kp I &kp C>;
+        };
 #pragma region homerow modes fingers configuration
     //////////////////////////////////////////////////////////////////////////
     //
