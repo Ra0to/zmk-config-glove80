@@ -4297,6 +4297,7 @@ behaviors {
         quick-tap-ms = <THUMB_REPEAT_DECAY>; // enable repeat
         #binding-cells = <2>;
         bindings = <&mo>, <&kp>;
+        retro-tap; // tap on standalone hold
     };
     thumb_parang_left: thumb_layer_access_parang_left {
         compatible = "zmk,behavior-hold-tap";
@@ -4305,6 +4306,7 @@ behaviors {
         quick-tap-ms = <THUMB_REPEAT_DECAY>; // enable repeat
         #binding-cells = <2>;
         bindings = <&mo>, <&parang_left>;
+        retro-tap; // tap on standalone hold
     };
     thumb_lower_shift: lower_layer_or_sticky_shift {
         compatible = "zmk,behavior-hold-tap";
@@ -4312,6 +4314,7 @@ behaviors {
         tapping-term-ms = <THUMB_HOLDING_TIME>;
         #binding-cells = <2>;
         bindings = <&mo>, <&sticky_key_oneshot>;
+        retro-tap; // tap on standalone hold
     };
     space: thumb_layer_access_spacebar {
         compatible = "zmk,behavior-hold-tap";
@@ -4320,6 +4323,7 @@ behaviors {
         quick-tap-ms = <SPACE_REPEAT_DECAY>; // enable repeat
         #binding-cells = <2>;
         bindings = <&mo>, <&kp>;
+        retro-tap; // tap on standalone hold
     };
 
     //
