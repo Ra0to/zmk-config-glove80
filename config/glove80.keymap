@@ -299,14 +299,13 @@
 / {
     // NOTE: Use the `#define` settings below to customize this keymap!
 // For example, here are the main optional features you can enable:
-#define DIFFICULTY_LEVEL 2 // 0:custom, 1:easy -> 5:hard (see below)
+#define DIFFICULTY_LEVEL 4 // 0:custom, 1:easy -> 5:hard (see below)
 // #define ENFORCE_BILATERAL   // cancels single-handed home row mod+tap
 #define WORLD_USE_COMPOSE   // use native Compose in place of Unicode
 // TIP: Add more setting overrides here instead of editing them below.
 #define OPERATING_SYSTEM 'W' // windows
 #define MIDDY_FINGER_MOD LSFT
 #define INDEX_FINGER_MOD LCTL
-#define DIFFICULTY_LEVEL_STREAK_DECAY 200
 ////////////////////////////////////////////////////////////////////////////
 //
 // Sunaku's Keymap v36 -- "Glorious Engrammer"
@@ -327,8 +326,12 @@
 // #define DIFFICULTY_LEVEL 5 // expert (100ms)
 //
 #if defined(DIFFICULTY_LEVEL) && DIFFICULTY_LEVEL > 0
+#ifndef DIFFICULTY_LEVEL_HOLDING_TIME
 #define DIFFICULTY_LEVEL_HOLDING_TIME  ((6 - DIFFICULTY_LEVEL) * 100)
+#endif
+#ifndef DIFFICULTY_LEVEL_STREAK_DECAY
 #define DIFFICULTY_LEVEL_STREAK_DECAY (((6 - DIFFICULTY_LEVEL) *  50) + 100)
+#endif
 #ifndef HOMEY_HOLDING_TIME
 #define HOMEY_HOLDING_TIME DIFFICULTY_LEVEL_HOLDING_TIME
 #endif
