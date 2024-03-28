@@ -45,15 +45,15 @@
 #define LAYER_Cursor 20
 #define LAYER_Number 21
 #define LAYER_Function 22
-#define LAYER_Emoji 23
-#define LAYER_Symbol 24
-#define LAYER_Mouse 25
-#define LAYER_System 26
-#define LAYER_World 27
-#define LAYER_Gaming 28
-#define LAYER_Factory 29
-#define LAYER_Lower 30
-#define LAYER_Magic 31
+#define LAYER_Symbol 23
+#define LAYER_Mouse 24
+#define LAYER_System 25
+#define LAYER_World 26
+#define LAYER_Gaming 27
+#define LAYER_Factory 28
+#define LAYER_Lower 29
+#define LAYER_Magic 30
+#define LAYER_Emoji 0
 #pragma endregion Layers definitions
 
 /* To deal with the situation where there is no Lower layer, to keep &lower happy */
@@ -10972,17 +10972,6 @@ UNICODE_MORPH_MODS
  &kp CAPS  &kp LEFT_PINKY_MOD  &kp LEFT_RING1_MOD  &kp LEFT_MIDDY_MOD  &kp LEFT_INDEX_MOD    &none                                                                                     &kp K_CALC         &kp F4        &kp F5        &kp F6        &kp F11         &kp F14
     &none           &kp _C(A)        &select_line        &select_word               &none    &none   &none   &none                &none  &kp C_PREV    &kp C_NEXT      &kp C_PP    &kp C_AL_FILES         &kp F1        &kp F2        &kp F3        &kp F12         &kp F15
     &none               &none        &extend_line        &extend_word               &none            &none   &none  &tog LAYER_Function  &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP                    &kp C_BRI_MAX  &kp C_BRI_UP  &kp C_BRI_DN  &kp C_BRI_MIN  &kp C_BRI_AUTO
-            >;
-        };
-
-        layer_Emoji {
-            bindings = <
-     &none      &none      &none      &none     &none                                                                                                        &none                &none                &none                &none   &none
-     &none  &kp GRAVE   &kp LPAR   &kp RPAR  &kp SEMI  &kp COMMA                                                                        &none                &none                &none                &none                &none   &none
-  &kp EXCL   &kp LBRC    &kp SQT    &kp DQT  &kp RBRC  &kp QMARK                                                                     &kp SEMI  &kp RIGHT_INDEX_MOD  &kp RIGHT_MIDDY_MOD  &kp RIGHT_RING1_MOD  &kp RIGHT_PINKY_MOD   &none
-  &kp HASH  &kp CARET  &kp EQUAL  &kp UNDER  &kp DLLR   &kp STAR                                                                      &kp DOT             &kp BSPC              &kp TAB            &kp SPACE              &kp RET   &none
-    &kp AT     &kp LT   &kp PIPE  &kp MINUS    &kp GT   &kp FSLH   &kp BSLH    &kp DOT  &kp STAR              &none   &none   &none  &kp FSLH              &kp DEL          &kp LS(TAB)                &none                &none   &none
- &kp TILDE   &kp AMPS   &kp LBKT   &kp RBKT  &kp PLUS             &kp PRCNT  &kp COLON  &kp SEMI  &tog LAYER_Symbol   &none   &none                         &trans               &trans               &trans               &trans   &none
             >;
         };
 
