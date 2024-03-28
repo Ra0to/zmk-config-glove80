@@ -83,7 +83,7 @@
     };
 };
 
-
+#pragma region bluetooth behaviours
 / {
 #ifdef BT_DISC_CMD
     behaviors {
@@ -187,6 +187,7 @@
     };
 #endif
 };
+#pragma endregion bluetooth behaviours
 
 / {
     behaviors {
