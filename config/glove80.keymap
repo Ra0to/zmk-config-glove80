@@ -35,14 +35,6 @@
 #define LAYER_Magic 11
 #pragma endregion Layers definitions
 
-/* To deal with the situation where there is no Lower layer, to keep &lower happy */
-#ifndef LAYER_Lower
-#define LAYER_Lower 0
-#endif
-
-/* Custom Device-tree */
-
-
 #pragma region Glove80 standard behaviours and macros
 /* Glove80 system behavior & macros */
 / {
@@ -277,14 +269,11 @@
 
 /* Custom Defined Behaviors */
 / {
-    // NOTE: Use the `#define` settings below to customize this keymap!
-// For example, here are the main optional features you can enable:
 #define DIFFICULTY_LEVEL 4 // 0:custom, 1:easy -> 5:hard (see below)
-// #define ENFORCE_BILATERAL   // cancels single-handed home row mod+tap
-// TIP: Add more setting overrides here instead of editing them below.
 #define OPERATING_SYSTEM 'W' // windows
 #define MIDDY_FINGER_MOD LSFT
 #define INDEX_FINGER_MOD LCTL
+
 ////////////////////////////////////////////////////////////////////////////
 //
 // Sunaku's Keymap v36 -- "Glorious Engrammer"
@@ -617,16 +606,6 @@ behaviors {
     // - https://github.com/urob/zmk-config#timeless-homerow-mods
     //
     //////////////////////////////////////////////////////////////////////////
-
-    //
-    // ENFORCE_BILATERAL cancels out single-handed home row mods activation by
-    // releasing any currently pressed mods and replacing them with plain taps.
-    //
-    // NOTE: You may still encounter "flashing mods" where an operating system
-    // action is triggered by the release of mods, such as LGUI which launches
-    // the Windows Start Menu and LALT which opens the Microsoft Office Ribbon.
-    //
-    //#define ENFORCE_BILATERAL
 
     //
     // The *_FINGER_MOD specify which modifiers are used by home row mod keys.
