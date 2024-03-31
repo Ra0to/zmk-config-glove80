@@ -32,7 +32,9 @@
 #define LAYER_Factory 8
 #define LAYER_Lower 9
 #define LAYER_Magic 10
-#define ALL_LAYERS 0 1 2 3 4 5 6 7 8 9 10
+#define ALL_LAYERS LAYER_QWERTY LAYER_Typing LAYER_Cursor LAYER_Number LAYER_Function LAYER_Symbol LAYER_Mouse LAYER_Gaming
+#define ALL_LAYERS_EXCEPT_BASE LAYER_Typing LAYER_Cursor LAYER_Number LAYER_Function LAYER_Symbol LAYER_Mouse LAYER_Gaming
+#define ALL_LAYERS_WITH_DEFAULTS LAYER_QWERTY LAYER_Typing LAYER_Cursor LAYER_Number LAYER_Function LAYER_Symbol LAYER_Mouse LAYER_Gaming LAYER_Factory LAYER_Lower LAYER_Magic
 #pragma endregion Layers definitions
 
 #pragma region Glove80 standard behaviours and macros
@@ -591,11 +593,18 @@ combos {
       layers = <0>;
     };
 
-    combo_base_layer {
+    combo_to_base_layer {
         timeout-ms = <COMBO_FIRING_DECAY>;
         key-positions = <POS_LH_T4 POS_RH_T4>;
         bindings = <&to LAYER_QWERTY>;
-        layers = <ALL_LAYERS>;
+        layers = <ALL_LAYERS_EXCEPT_BASE>;
+    };
+
+    combo_to_typing_layer {
+        timeout-ms = <COMBO_FIRING_DECAY>;
+        key-positions = <POS_LH_T4 POS_RH_T4>;
+        bindings = <&to LAYER_Typing>;
+        layers = <LAYER_QWERTY>;
     };
 };
 
