@@ -23,17 +23,16 @@
 /* Automatically generated layer name #define */
 #define LAYER_QWERTY 0
 #define LAYER_Typing 1
-#define LAYER_RightIndex 2
-#define LAYER_Cursor 3
-#define LAYER_Number 4
-#define LAYER_Function 5
-#define LAYER_Symbol 6
-#define LAYER_Mouse 7
-#define LAYER_Gaming 8
-#define LAYER_Factory 9
-#define LAYER_Lower 10
-#define LAYER_Magic 11
-#define ALL_LAYERS 0 1 2 3 4 5 6 7 8 9 10 11 12
+#define LAYER_Cursor 2
+#define LAYER_Number 3
+#define LAYER_Function 4
+#define LAYER_Symbol 5
+#define LAYER_Mouse 6
+#define LAYER_Gaming 7
+#define LAYER_Factory 8
+#define LAYER_Lower 9
+#define LAYER_Magic 10
+#define ALL_LAYERS 0 1 2 3 4 5 6 7 8 9 10
 #pragma endregion Layers definitions
 
 #pragma region Glove80 standard behaviours and macros
