@@ -642,111 +642,6 @@ macros {
             , <&macro_release &mo MACRO_PLACEHOLDER>
             ;
     };
-
-    #pragma region selection macros
-    //////////////////////////////////////////////////////////////////////////
-    //
-    // Approximation of Pascal Getreuer's Select Word macro from QMK
-    // - https://getreuer.info/posts/keyboards/select-word/index.html
-    //
-    //////////////////////////////////////////////////////////////////////////
-
-    //
-    // SELECT_WORD_DELAY defines how long the macro waits (milliseconds)
-    // after moving the cursor before it selects a word.  A larger delay
-    // may allow the macro to move to the next word upon each invocation.
-    //
-    #ifndef SELECT_WORD_DELAY
-    #define SELECT_WORD_DELAY 1
-    #endif
-
-    ZMK_MACRO(select_none,
-        wait-ms = <SELECT_WORD_DELAY>;
-        tap-ms = <SELECT_WORD_DELAY>;
-        bindings = <&kp DOWN &kp UP &kp RIGHT &kp LEFT>;
-    )
-
-    //
-    // select a word (jumps to next word upon each successive invocation)
-    //
-    select_word: select_word {
-        compatible = "zmk,behavior-mod-morph";
-        #binding-cells = <0>;
-        bindings = <&select_word_right>, <&select_word_left>;
-        mods = <(MOD_LSFT|MOD_RSFT)>;
-    };
-    ZMK_MACRO(select_word_right,
-        wait-ms = <SELECT_WORD_DELAY>;
-        tap-ms = <SELECT_WORD_DELAY>;
-        bindings = <&kp _W(RIGHT) &kp _W(LEFT) &kp _W(LS(RIGHT))>;
-    )
-    ZMK_MACRO(select_word_left,
-        wait-ms = <SELECT_WORD_DELAY>;
-        tap-ms = <SELECT_WORD_DELAY>;
-        bindings = <&kp _W(LEFT) &kp _W(RIGHT) &kp _W(LS(LEFT))>;
-    )
-
-    //
-    // extend current selection by one word
-    //
-    extend_word: extend_word {
-        compatible = "zmk,behavior-mod-morph";
-        #binding-cells = <0>;
-        bindings = <&extend_word_right>, <&extend_word_left>;
-        mods = <(MOD_LSFT|MOD_RSFT)>;
-    };
-    ZMK_MACRO(extend_word_right,
-        wait-ms = <SELECT_WORD_DELAY>;
-        tap-ms = <SELECT_WORD_DELAY>;
-        bindings = <&kp _W(LS(RIGHT))>;
-    )
-    ZMK_MACRO(extend_word_left,
-        wait-ms = <SELECT_WORD_DELAY>;
-        tap-ms = <SELECT_WORD_DELAY>;
-        bindings = <&kp _W(LS(LEFT))>;
-    )
-
-    //
-    // select current line
-    //
-    select_line: select_line {
-        compatible = "zmk,behavior-mod-morph";
-        #binding-cells = <0>;
-        bindings = <&select_line_right>, <&select_line_left>;
-        mods = <(MOD_LSFT|MOD_RSFT)>;
-    };
-    ZMK_MACRO(select_line_right,
-        wait-ms = <SELECT_WORD_DELAY>;
-        tap-ms = <SELECT_WORD_DELAY>;
-        bindings = <&kp _HOME &kp LS(_END)>;
-    )
-    ZMK_MACRO(select_line_left,
-        wait-ms = <SELECT_WORD_DELAY>;
-        tap-ms = <SELECT_WORD_DELAY>;
-        bindings = <&kp _END &kp LS(_HOME)>;
-    )
-
-    //
-    // extend current selection by one line
-    //
-    extend_line: extend_line {
-        compatible = "zmk,behavior-mod-morph";
-        #binding-cells = <0>;
-        bindings = <&extend_line_right>, <&extend_line_left>;
-        mods = <(MOD_LSFT|MOD_RSFT)>;
-    };
-    ZMK_MACRO(extend_line_right,
-        wait-ms = <SELECT_WORD_DELAY>;
-        tap-ms = <SELECT_WORD_DELAY>;
-        bindings = <&kp LS(DOWN) &kp LS(_END)>;
-    )
-    ZMK_MACRO(extend_line_left,
-        wait-ms = <SELECT_WORD_DELAY>;
-        tap-ms = <SELECT_WORD_DELAY>;
-        bindings = <&kp LS(UP) &kp LS(_HOME)>;
-    )
-    #pragma endregion selection macros
-
 };
 };
 
@@ -793,8 +688,8 @@ macros {
     &kp ESC             &kp RET           &kp SPACE             &kp TAB             &kp DEL  &kp INS                                                                                       &kp CARET    &kp DLLR    &kp HASH      &kp AT       &kp EXCL   &kp PIPE
       &none           &sk LSHFT           &kp _REDO           &kp _UNDO            &kp BSPC    &kp A                                                                                       &kp PRCNT  &kp N7  &kp N8  &kp N9      &kp COLON      &kp K
  &kp KP_NUM  &kp LEFT_PINKY_MOD  &kp LEFT_RING1_MOD  &kp LEFT_MIDDY_MOD  &kp LEFT_INDEX_MOD    &kp B                                                                                    &kp PLUS  &kp N4  &kp N5  &kp N6  &kp MINUS      &kp J
-      &none           &kp _C(A)        &select_line        &select_word           &kp UNDER    &kp C   &kp D   &kp E              &kp F         &kp LT       &kp GT  &kp EQUAL  &kp ASTERISK  &kp N1  &kp N2  &kp N3  &kp SLASH  &kp LS(G)
-      &none               &none        &extend_line        &extend_word               &kp X            &none   &none  &tog LAYER_Number  &kp COMMA  &kp DOT     &kp N0                        &trans      &trans      &trans         &trans  &kp TILDE
+      &none           &kp _C(A)               &none               &none           &kp UNDER    &kp C   &kp D   &kp E              &kp F         &kp LT       &kp GT  &kp EQUAL  &kp ASTERISK  &kp N1  &kp N2  &kp N3  &kp SLASH  &kp LS(G)
+      &none               &none               &none               &none               &kp X            &none   &none  &tog LAYER_Number  &kp COMMA  &kp DOT     &kp N0                        &trans      &trans      &trans         &trans  &kp TILDE
             >;
         };
 
@@ -804,8 +699,8 @@ macros {
   &kp ESC             &kp RET           &kp SPACE             &kp TAB             &kp DEL  &kp INS                                                                               &kp C_MEDIA_HOME     &kp C_PLAY    &kp C_PREV    &kp C_NEXT     &kp C_STOP     &kp C_EJECT
     &none           &sk LSHFT           &kp _REDO           &kp _UNDO            &kp BSPC    &none                                                                                      &kp K_WWW         &kp F7        &kp F8        &kp F9        &kp F10         &kp F13
  &kp CAPS  &kp LEFT_PINKY_MOD  &kp LEFT_RING1_MOD  &kp LEFT_MIDDY_MOD  &kp LEFT_INDEX_MOD    &none                                                                                     &kp K_CALC         &kp F4        &kp F5        &kp F6        &kp F11         &kp F14
-    &none           &kp _C(A)        &select_line        &select_word               &none    &none   &none   &none                &none  &kp C_PREV    &kp C_NEXT      &kp C_PP    &kp C_AL_FILES         &kp F1        &kp F2        &kp F3        &kp F12         &kp F15
-    &none               &none        &extend_line        &extend_word               &none            &none   &none  &tog LAYER_Function  &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP                    &kp C_BRI_MAX  &kp C_BRI_UP  &kp C_BRI_DN  &kp C_BRI_MIN  &kp C_BRI_AUTO
+    &none           &kp _C(A)               &none               &none               &none    &none   &none   &none                &none  &kp C_PREV    &kp C_NEXT      &kp C_PP    &kp C_AL_FILES         &kp F1        &kp F2        &kp F3        &kp F12         &kp F15
+    &none               &none               &none               &none               &none            &none   &none  &tog LAYER_Function  &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP                    &kp C_BRI_MAX  &kp C_BRI_UP  &kp C_BRI_DN  &kp C_BRI_MIN  &kp C_BRI_AUTO
             >;
         };
 
