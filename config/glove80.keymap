@@ -208,7 +208,6 @@
 #define MIDDY_FINGER_MOD LSFT
 #define INDEX_FINGER_MOD LCTL
 #define THUMB_REPEAT_DECAY 300
-#define SPACE_REPEAT_DECAY THUMB_REPEAT_DECAY
 
 ////////////////////////////////////////////////////////////////////////////
 //
@@ -253,12 +252,6 @@
 #endif
 #ifndef PLAIN_STREAK_DECAY
 #define PLAIN_STREAK_DECAY DIFFICULTY_LEVEL_STREAK_DECAY
-#endif
-#ifndef SPACE_HOLDING_TIME
-#define SPACE_HOLDING_TIME DIFFICULTY_LEVEL_HOLDING_TIME
-#endif
-#ifndef SPACE_STREAK_DECAY
-#define SPACE_STREAK_DECAY DIFFICULTY_LEVEL_STREAK_DECAY
 #endif
 #endif
 
@@ -580,33 +573,6 @@ behaviors {
     #define THUMB_REPEAT_DECAY 300 // "tap then hold" for key auto-repeat
     #endif
 
-    //
-    // SPACE_HOLDING_TYPE defines the flavor of ZMK hold-tap behavior to use
-    // for spacebar (assigned to the right thumb's home position by default).
-    //
-    // NOTE: The "balanced" flavor of ZMK hold-tap provides instant modifier
-    // activation for the symbol layer (if the tapped symbol key is released
-    // while the thumb layer key is still held down) for quicker programming.
-    //
-    #ifndef SPACE_HOLDING_TYPE
-    #define SPACE_HOLDING_TYPE THUMB_HOLDING_TYPE
-    #endif
-
-    //
-    // SPACE_HOLDING_TIME defines how long you need to hold (milliseconds)
-    // the space thumb key to activate.  Shorter holds are treated as taps.
-    //
-    #ifndef SPACE_HOLDING_TIME
-    #define SPACE_HOLDING_TIME THUMB_HOLDING_TIME
-    #endif
-
-    //
-    // SPACE_REPEAT_DECAY defines how much time you have left (milliseconds)
-    // after tapping a key to hold it again in order to make it auto-repeat.
-    //
-    #ifndef SPACE_REPEAT_DECAY
-    #define SPACE_REPEAT_DECAY 150
-    #endif
 #pragma endregion homerow modes timing configuration
 
 #pragma region keys setup
@@ -715,17 +681,6 @@ behaviors {
         bindings = <&mo>, <&kp>;
         retro-tap; // tap on standalone hold
     };
-
-    space: thumb_layer_access_spacebar {
-        compatible = "zmk,behavior-hold-tap";
-        flavor = SPACE_HOLDING_TYPE;
-        tapping-term-ms = <SPACE_HOLDING_TIME>;
-        quick-tap-ms = <SPACE_REPEAT_DECAY>; // enable repeat
-        #binding-cells = <2>;
-        bindings = <&mo>, <&kp>;
-        retro-tap; // tap on standalone hold
-    };
-
 };
 
 macros {
@@ -889,7 +844,7 @@ macros {
               &kp TAB     &kp Q    &kp W     &kp E      &kp R   &kp T                                                                   &kp Y   &kp U      &kp I     &kp O     &kp P   &kp BSLH
               &kp ESC     &left_hrm LEFT_PINKY_MOD A  &left_hrm LEFT_RING1_MOD S  &left_hrm LEFT_MIDDY_MOD D  &left_hrm LEFT_INDEX_MOD F   &kp G                                                                   &kp H   &right_hrm RIGHT_INDEX_MOD J  &right_hrm RIGHT_MIDDY_MOD K  &right_hrm RIGHT_RING1_MOD L  &right_hrm RIGHT_PINKY_MOD SEMI   &kp SQT
             &kp GRAVE     &kp Z    &kp X     &kp C      &kp V   &kp B  &thumb LAYER_Function ESC  &sk LSHIFT    &lower  &kp LGUI  &caps_word &kp TAB   &kp N   &kp M  &kp COMMA   &kp DOT  &kp FSLH  &kp LG(SPACE)
- &magic LAYER_Magic 0  &kp HOME  &kp END  &kp LEFT  &kp RIGHT           &thumb LAYER_Cursor BACKSPACE    &thumb LAYER_Number DELETE  &thumb LAYER_Lower LALT  &thumb LAYER_Lower RALT    &kp RET  &space LAYER_Symbol SPACE          &kp UP   &kp DOWN  &kp LBKT  &kp RBKT  &kp PG_DN
+ &magic LAYER_Magic 0  &kp HOME  &kp END  &kp LEFT  &kp RIGHT           &thumb LAYER_Cursor BACKSPACE    &thumb LAYER_Number DELETE  &thumb LAYER_Lower LALT  &thumb LAYER_Lower RALT    &kp RET  &thumb LAYER_Symbol SPACE          &kp UP   &kp DOWN  &kp LBKT  &kp RBKT  &kp PG_DN
             >;
         };
 
