@@ -27,14 +27,13 @@
 #define LAYER_Number 3
 #define LAYER_Function 4
 #define LAYER_Symbol 5
-#define LAYER_Mouse 6
-#define LAYER_Gaming 7
-#define LAYER_Factory 8
-#define LAYER_Lower 9
-#define LAYER_Magic 10
-#define ALL_LAYERS LAYER_QWERTY LAYER_Typing LAYER_Cursor LAYER_Number LAYER_Function LAYER_Symbol LAYER_Mouse LAYER_Gaming
-#define ALL_LAYERS_EXCEPT_BASE LAYER_Typing LAYER_Cursor LAYER_Number LAYER_Function LAYER_Symbol LAYER_Mouse LAYER_Gaming
-#define ALL_LAYERS_WITH_DEFAULTS LAYER_QWERTY LAYER_Typing LAYER_Cursor LAYER_Number LAYER_Function LAYER_Symbol LAYER_Mouse LAYER_Gaming LAYER_Factory LAYER_Lower LAYER_Magic
+#define LAYER_Gaming 6
+#define LAYER_Factory 7
+#define LAYER_Lower 8
+#define LAYER_Magic 9
+#define ALL_LAYERS LAYER_QWERTY LAYER_Typing LAYER_Cursor LAYER_Number LAYER_Function LAYER_Symbol LAYER_Gaming
+#define ALL_LAYERS_EXCEPT_BASE LAYER_Typing LAYER_Cursor LAYER_Number LAYER_Function LAYER_Symbol LAYER_Gaming
+#define ALL_LAYERS_WITH_DEFAULTS LAYER_QWERTY LAYER_Typing LAYER_Cursor LAYER_Number LAYER_Function LAYER_Symbol LAYER_Gaming LAYER_Factory LAYER_Lower LAYER_Magic
 #pragma endregion Layers definitions
 
 #pragma region Glove80 standard behaviours and macros
@@ -1122,140 +1121,11 @@ macros {
 /*HACK*/};
 /*HACK*//{
 
-#pragma region mouse keys config
-//////////////////////////////////////////////////////////////////////////
-//
-// Mouse keys (control mouse via keyboard) -- requires PR23 beta firmware:
-// select "community.pr23.mouse-keys" from the drop-down menu located at
-// Glove80 Layout Editor > Settings > Advanced Settings > Firmware Version
-//
-// - https://github.com/moergo-sc/zmk/pull/23
-// - https://gist.github.com/krissen/dd27082e7ab0575619c7a31f4d2ec7ae
-// - https://github.com/zmkfirmware/zmk/compare/main...urob:zmk:mouse-3.2
-//
-//////////////////////////////////////////////////////////////////////////
-
-//
-// MOUSE_MOTION_DELAY defines how long to wait (milliseconds) before starting
-// to move the mouse pointer.
-//
-#ifndef MOUSE_MOTION_DELAY
-#define MOUSE_MOTION_DELAY 0
-#endif
-
-//
-// MOUSE_MOTION_ACCELERATION_EXPONENT sets how the mouse pointer accelerates:
-//
-// acceleration exponent 0: uniform speed
-// acceleration exponent 1: uniform acceleration
-// acceleration exponent 2: uniform jerk
-//
-#ifndef MOUSE_MOTION_ACCELERATION_EXPONENT
-#define MOUSE_MOTION_ACCELERATION_EXPONENT 1
-#endif
-
-//
-// MOUSE_MOTION_TIME_TO_MAXIMUM_SPEED defines how long to wait (milliseconds)
-// before the mouse pointer speed is suddenly boosted to the maximum value.
-//
-#ifndef MOUSE_MOTION_TIME_TO_MAXIMUM_SPEED
-#define MOUSE_MOTION_TIME_TO_MAXIMUM_SPEED 300
-#endif
-
-//
-// MOUSE_MOTION_MAXIMUM_SPEED defines how quickly the mouse pointer can move.
-//
-#ifndef MOUSE_MOTION_MAXIMUM_SPEED
-#define MOUSE_MOTION_MAXIMUM_SPEED 600
-#endif
-
-//
-// MOUSE_SCROLL_DELAY defines how long to wait (milliseconds) before starting
-// to move the mouse pointer.
-//
-#ifndef MOUSE_SCROLL_DELAY
-#define MOUSE_SCROLL_DELAY 0
-#endif
-
-//
-// MOUSE_SCROLL_ACCELERATION_EXPONENT sets how the mouse pointer accelerates:
-//
-// acceleration exponent 0: uniform speed
-// acceleration exponent 1: uniform acceleration
-// acceleration exponent 2: uniform jerk
-//
-#ifndef MOUSE_SCROLL_ACCELERATION_EXPONENT
-#define MOUSE_SCROLL_ACCELERATION_EXPONENT 0
-#endif
-
-//
-// MOUSE_SCROLL_TIME_TO_MAXIMUM_SPEED defines how long to wait (milliseconds)
-// before the mouse pointer speed is suddenly boosted to the maximum value.
-//
-#ifndef MOUSE_SCROLL_TIME_TO_MAXIMUM_SPEED
-#define MOUSE_SCROLL_TIME_TO_MAXIMUM_SPEED 300
-#endif
-
-//
-// MOUSE_SCROLL_MAXIMUM_SPEED defines how quickly the mouse wheel can scroll.
-//
-#ifndef MOUSE_SCROLL_MAXIMUM_SPEED
-#define MOUSE_SCROLL_MAXIMUM_SPEED 10
-#endif
 /*HACK*/};
-#if __has_include(<zmk/events/mouse_tick.h>)
-    // ==== MOUSE-KEY <section begins> ====
-    #define ZMK_MOUSE_DEFAULT_MOVE_VAL MOUSE_MOTION_MAXIMUM_SPEED
-    #define ZMK_MOUSE_DEFAULT_SCRL_VAL MOUSE_SCROLL_MAXIMUM_SPEED
-    #include <dt-bindings/zmk/mouse.h>
-    &mmv {
-      delay-ms = <MOUSE_MOTION_DELAY>;
-      acceleration-exponent = <MOUSE_MOTION_ACCELERATION_EXPONENT>;
-      time-to-max-speed-ms = <MOUSE_MOTION_TIME_TO_MAXIMUM_SPEED>;
-    };
-    &msc {
-      delay-ms = <MOUSE_SCROLL_DELAY>;
-      acceleration-exponent = <MOUSE_SCROLL_ACCELERATION_EXPONENT>;
-      time-to-max-speed-ms = <MOUSE_SCROLL_TIME_TO_MAXIMUM_SPEED>;
-    };
-    // ==== MOUSE-KEY <section ends> =====
-#else
-    #define mkp none
-    #define mmv none
-    #define msc none
-    #define LCLK
-    #define MCLK
-    #define RCLK
-    #define MB1
-    #define MB2
-    #define MB3
-    #define MB4
-    #define MB5
-    #define MB6
-    #define MB7
-    #define MB8
-    #define MOVE_UP
-    #define MOVE_DOWN
-    #define MOVE_LEFT
-    #define MOVE_RIGHT
-    #define SCRL_UP
-    #define SCRL_DOWN
-    #define SCRL_LEFT
-    #define SCRL_RIGHT
-#endif
 /*HACK*//{
 
 };
-#pragma endregion mouse keys config
 
-/* Automatically generated macro definitions */
-/ {
-    macros {
-    
-    };
-};
-
-/* Automatically generated keymap */
 / {
     keymap {
         compatible = "zmk,keymap";
@@ -1267,7 +1137,7 @@ macros {
               &kp TAB     &kp Q    &kp W     &kp E      &kp R   &kp T                                                                   &kp Y   &kp U      &kp I     &kp O     &kp P   &kp BSLH
               &kp ESC     &left_hrm LEFT_PINKY_MOD A  &left_hrm LEFT_RING1_MOD S  &left_hrm LEFT_MIDDY_MOD D  &left_hrm LEFT_INDEX_MOD F   &kp G                                                                   &kp H   &right_hrm RIGHT_INDEX_MOD J  &right_hrm RIGHT_MIDDY_MOD K  &right_hrm RIGHT_RING1_MOD L  &right_hrm RIGHT_PINKY_MOD SEMI   &kp SQT
             &kp GRAVE     &kp Z    &kp X     &kp C      &kp V   &kp B  &thumb LAYER_Function ESC  &sk LSHIFT    &lower  &kp LGUI  &caps_word &kp TAB   &kp N   &kp M  &kp COMMA   &kp DOT  &kp FSLH  &kp LG(SPACE)
- &magic LAYER_Magic 0  &kp HOME  &kp END  &kp LEFT  &kp RIGHT           &thumb LAYER_Cursor BACKSPACE    &thumb LAYER_Number DELETE  &thumb LAYER_Lower LALT  &thumb LAYER_Lower RALT    &thumb LAYER_Mouse RET  &space LAYER_Symbol SPACE          &kp UP   &kp DOWN  &kp LBKT  &kp RBKT  &kp PG_DN
+ &magic LAYER_Magic 0  &kp HOME  &kp END  &kp LEFT  &kp RIGHT           &thumb LAYER_Cursor BACKSPACE    &thumb LAYER_Number DELETE  &thumb LAYER_Lower LALT  &thumb LAYER_Lower RALT    &kp RET  &space LAYER_Symbol SPACE          &kp UP   &kp DOWN  &kp LBKT  &kp RBKT  &kp PG_DN
             >;
         };
 
@@ -1326,17 +1196,6 @@ macros {
             >;
         };
 
-        layer_Mouse {
-            bindings = <
-  &none   &none           &none           &none            &none                                                                                                   &none                &none                &none                &none   &none
-  &none   &none           &none           &none            &none   &none                                                                      &none                &none                &none                &none                &none   &none
-  &none   &none  &msc SCRL_LEFT    &mmv MOVE_UP  &msc SCRL_RIGHT   &none                                                                  &mkp MCLK  &kp RIGHT_INDEX_MOD  &kp RIGHT_MIDDY_MOD  &kp RIGHT_RING1_MOD  &kp RIGHT_PINKY_MOD   &none
-  &none   &none  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT   &none                                                                  &mkp LCLK       &mmv MOVE_LEFT         &mmv MOVE_UP       &mmv MOVE_DOWN      &mmv MOVE_RIGHT   &none
-  &none   &none           &none  &msc SCRL_DOWN     &msc SCRL_UP   &none  &mkp MCLK      &none   &none             &none   &none   &none  &mkp RCLK       &msc SCRL_LEFT         &msc SCRL_UP       &msc SCRL_DOWN      &msc SCRL_RIGHT   &none
-  &none   &none           &none           &none            &none          &mkp LCLK  &mkp RCLK   &none  &tog LAYER_Mouse   &none   &none                           &none                &none                &none                &none   &none
-            >;
-        };
-
         layer_Gaming {
             bindings = <
     &trans     &trans  &trans  &trans  &trans                                                                                             &trans  &trans     &trans   &trans    &trans
@@ -1366,7 +1225,7 @@ macros {
               &kp TAB         &none           &none    &kp UP_ARROW             &none    &kp END                                                                                                                         &kp RPAR         &kp KP_N7     &kp KP_N8     &kp KP_N9     &kp KP_MINUS        &kp SCROLLLOCK
               &kp ESC         &none  &kp LEFT_ARROW  &kp DOWN_ARROW   &kp RIGHT_ARROW  &kp PG_UP                                                                                                                      &kp PERCENT         &kp KP_N4     &kp KP_N5     &kp KP_N6      &kp KP_PLUS            &kp KP_NUM
             &kp GRAVE     &kp K_APP           &none         &kp F11           &kp F12  &kp PG_DN  &tog LAYER_Function  &tog LAYER_Typing  &tog LAYER_Gaming  &tog LAYER_Gaming  &tog LAYER_Typing  &none    &kp COMMA         &kp KP_N1     &kp KP_N2     &kp KP_N3     &kp KP_ENTER              &kp LALT
- &magic LAYER_Magic 0      &kp CAPS         &kp INS         &kp F11           &none               &tog LAYER_Cursor  &tog LAYER_Number   &tog LAYER_Lower   &tog LAYER_Lower   &tog LAYER_Mouse  &tog LAYER_Symbol               &none     &kp KP_N0    &kp KP_DOT     &kp KP_ENTER  &magic LAYER_Magic 0
+ &magic LAYER_Magic 0      &kp CAPS         &kp INS         &kp F11           &none               &tog LAYER_Cursor  &tog LAYER_Number   &tog LAYER_Lower   &tog LAYER_Lower   &none  &tog LAYER_Symbol               &none     &kp KP_N0    &kp KP_DOT     &kp KP_ENTER  &magic LAYER_Magic 0
             >;
         };
 
