@@ -275,6 +275,8 @@
 #define OPERATING_SYSTEM 'W' // windows
 #define MIDDY_FINGER_MOD LSFT
 #define INDEX_FINGER_MOD LCTL
+#define THUMB_REPEAT_DECAY 300
+#define SPACE_REPEAT_DECAY THUMB_REPEAT_DECAY
 
 ////////////////////////////////////////////////////////////////////////////
 //
