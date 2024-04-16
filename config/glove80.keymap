@@ -250,6 +250,10 @@
 #endif
 #endif
 
+#define WEAK_HOMEY_HOLDING_TIME (HOMEY_HOLDING_TIME+100)
+#define WEAK_HOMEY_STREAK_DECAY (HOMEY_STREAK_DECAY+100)
+#define STRONG_HOMEY_STREAK_DECAY (HOMEY_STREAK_DECAY-50)
+
 //
 // OPERATING_SYSTEM defines which operating system you intend to use
 // with this keymap, because shortcuts vary across operating systems.
@@ -583,6 +587,18 @@ behaviors {
                           71 54   55 72
 #pragma endregion keys setup
 
+    weak_right_hrm: weak_right_home_row_mode {
+        compatible = "zmk,behavior-hold-tap";
+        flavor = HOMEY_HOLDING_TYPE;
+        hold-trigger-key-positions = <LEFT_HAND_KEYS THUMB_KEYS>;
+        hold-trigger-on-release; // wait for other home row mods
+        tapping-term-ms = <WEAK_HOMEY_HOLDING_TIME>;
+        quick-tap-ms = <HOMEY_REPEAT_DECAY>;
+        require-prior-idle-ms = <WEAK_HOMEY_STREAK_DECAY>;
+        #binding-cells = <2>;
+        bindings = <&kp>, <&kp>;
+    };
+
     right_hrm: right_home_row_mode {
         compatible = "zmk,behavior-hold-tap";
         flavor = HOMEY_HOLDING_TYPE;
@@ -595,6 +611,31 @@ behaviors {
         bindings = <&kp>, <&kp>;
     };
 
+    strong_right_hrm: strong_right_home_row_mode {
+        compatible = "zmk,behavior-hold-tap";
+        flavor = HOMEY_HOLDING_TYPE;
+        hold-trigger-key-positions = <LEFT_HAND_KEYS THUMB_KEYS>;
+        hold-trigger-on-release; // wait for other home row mods
+        tapping-term-ms = <HOMEY_HOLDING_TIME>;
+        quick-tap-ms = <HOMEY_REPEAT_DECAY>;
+        require-prior-idle-ms = <STRONG_HOMEY_STREAK_DECAY>;
+        #binding-cells = <2>;
+        bindings = <&kp>, <&kp>;
+    };
+
+
+    weak_left_hrm: weak_left_home_row_mode {
+        compatible = "zmk,behavior-hold-tap";
+        flavor = HOMEY_HOLDING_TYPE;
+        hold-trigger-key-positions = <LEFT_HAND_KEYS THUMB_KEYS>;
+        hold-trigger-on-release; // wait for other home row mods
+        tapping-term-ms = <WEAK_HOMEY_HOLDING_TIME>;
+        quick-tap-ms = <HOMEY_REPEAT_DECAY>;
+        require-prior-idle-ms = <WEAK_HOMEY_STREAK_DECAY>;
+        #binding-cells = <2>;
+        bindings = <&kp>, <&kp>;
+    };
+
     left_hrm: left_home_row_mode {
         compatible = "zmk,behavior-hold-tap";
         flavor = HOMEY_HOLDING_TYPE;
@@ -603,6 +644,18 @@ behaviors {
         tapping-term-ms = <HOMEY_HOLDING_TIME>;
         quick-tap-ms = <HOMEY_REPEAT_DECAY>;
         require-prior-idle-ms = <HOMEY_STREAK_DECAY>;
+        #binding-cells = <2>;
+        bindings = <&kp>, <&kp>;
+    };
+
+    strong_left_hrm: strong_left_home_row_mode {
+        compatible = "zmk,behavior-hold-tap";
+        flavor = HOMEY_HOLDING_TYPE;
+        hold-trigger-key-positions = <LEFT_HAND_KEYS THUMB_KEYS>;
+        hold-trigger-on-release; // wait for other home row mods
+        tapping-term-ms = <HOMEY_HOLDING_TIME>;
+        quick-tap-ms = <HOMEY_REPEAT_DECAY>;
+        require-prior-idle-ms = <STRONG_HOMEY_STREAK_DECAY>;
         #binding-cells = <2>;
         bindings = <&kp>, <&kp>;
     };
@@ -679,7 +732,7 @@ macros {
                &kp F1    &kp F2   &kp F3    &kp F4     &kp F5                                                                                  &kp F6     &kp F7    &kp F8    &kp F9    &kp F10
             &kp EQUAL    &kp N1   &kp N2    &kp N3     &kp N4  &kp N5                                                                  &kp N6  &kp N7     &kp N8    &kp N9    &kp N0  &kp MINUS
               &kp TAB     &kp Q    &kp W     &kp E      &kp R   &kp T                                                                   &kp Y   &kp U      &kp I     &kp O     &kp P   &kp BSLH
-              &kp ESC     &left_hrm LEFT_PINKY_MOD A  &left_hrm LEFT_RING1_MOD S  &left_hrm LEFT_MIDDY_MOD D  &left_hrm LEFT_INDEX_MOD F   &kp G                                                                   &kp H   &right_hrm RIGHT_INDEX_MOD J  &right_hrm RIGHT_MIDDY_MOD K  &right_hrm RIGHT_RING1_MOD L  &right_hrm RIGHT_PINKY_MOD SEMI   &kp SQT
+              &kp ESC     &weak_left_hrm LEFT_PINKY_MOD A  &weak_left_hrm LEFT_RING1_MOD S  &strong_left_hrm LEFT_MIDDY_MOD D  &left_hrm LEFT_INDEX_MOD F   &kp G                                                                   &kp H   &right_hrm RIGHT_INDEX_MOD J  &strong_right_hrm RIGHT_MIDDY_MOD K  &weak_right_hrm RIGHT_RING1_MOD L  &weak_right_hrm RIGHT_PINKY_MOD SEMI   &kp SQT
             &kp GRAVE     &kp Z    &kp X     &kp C      &kp V   &kp B  &thumb LAYER_Function ESC  &thumb_caps_word LAYER_Mouse 0   &lower  &kp LGUI  &caps_word &kp TAB   &kp N   &kp M  &kp COMMA   &kp DOT  &kp FSLH  &kp LG(SPACE)
  &magic LAYER_Magic 0  &kp HOME  &kp END  &kp LEFT  &kp RIGHT           &thumb LAYER_Cursor BACKSPACE    &thumb LAYER_Number DELETE  &thumb LAYER_Lower LALT  &thumb LAYER_Lower RALT    &kp RET  &thumb LAYER_Symbol SPACE          &kp UP   &kp DOWN  &kp LBKT  &kp RBKT  &kp PG_DN
             >;
