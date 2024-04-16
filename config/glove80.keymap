@@ -619,6 +619,16 @@ behaviors {
         bindings = <&mo>, <&kp>;
         retro-tap; // tap on standalone hold
     };
+
+    thumb_caps_word: thumb_layer_access_and_caps {
+        compatible = "zmk,behavior-hold-tap";
+        flavor = THUMB_HOLDING_TYPE;
+        tapping-term-ms = <THUMB_HOLDING_TIME>;
+        quick-tap-ms = <THUMB_REPEAT_DECAY>; // enable repeat
+        #binding-cells = <2>;
+        bindings = <&mo>, <&caps_word>;
+        retro-tap; // tap on standalone hold
+    };
 };
 
 macros {
@@ -670,7 +680,7 @@ macros {
             &kp EQUAL    &kp N1   &kp N2    &kp N3     &kp N4  &kp N5                                                                  &kp N6  &kp N7     &kp N8    &kp N9    &kp N0  &kp MINUS
               &kp TAB     &kp Q    &kp W     &kp E      &kp R   &kp T                                                                   &kp Y   &kp U      &kp I     &kp O     &kp P   &kp BSLH
               &kp ESC     &left_hrm LEFT_PINKY_MOD A  &left_hrm LEFT_RING1_MOD S  &left_hrm LEFT_MIDDY_MOD D  &left_hrm LEFT_INDEX_MOD F   &kp G                                                                   &kp H   &right_hrm RIGHT_INDEX_MOD J  &right_hrm RIGHT_MIDDY_MOD K  &right_hrm RIGHT_RING1_MOD L  &right_hrm RIGHT_PINKY_MOD SEMI   &kp SQT
-            &kp GRAVE     &kp Z    &kp X     &kp C      &kp V   &kp B  &thumb LAYER_Function ESC  &thumb LAYER_Mouse    &lower  &kp LGUI  &caps_word &kp TAB   &kp N   &kp M  &kp COMMA   &kp DOT  &kp FSLH  &kp LG(SPACE)
+            &kp GRAVE     &kp Z    &kp X     &kp C      &kp V   &kp B  &thumb LAYER_Function ESC  &thumb_caps_word LAYER_Mouse 0   &lower  &kp LGUI  &caps_word &kp TAB   &kp N   &kp M  &kp COMMA   &kp DOT  &kp FSLH  &kp LG(SPACE)
  &magic LAYER_Magic 0  &kp HOME  &kp END  &kp LEFT  &kp RIGHT           &thumb LAYER_Cursor BACKSPACE    &thumb LAYER_Number DELETE  &thumb LAYER_Lower LALT  &thumb LAYER_Lower RALT    &kp RET  &thumb LAYER_Symbol SPACE          &kp UP   &kp DOWN  &kp LBKT  &kp RBKT  &kp PG_DN
             >;
         };
