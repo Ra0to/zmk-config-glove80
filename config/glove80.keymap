@@ -18,6 +18,7 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/rgb.h>
+#include <dt-bindings/zmk/mouse.h>
 
 #pragma region Layers definitions
 /* Automatically generated layer name #define */
@@ -28,12 +29,13 @@
 #define LAYER_Function 4
 #define LAYER_Symbol 5
 #define LAYER_Gaming 6
-#define LAYER_Factory 7
-#define LAYER_Lower 8
-#define LAYER_Magic 9
-#define ALL_LAYERS LAYER_QWERTY LAYER_Typing LAYER_Cursor LAYER_Number LAYER_Function LAYER_Symbol LAYER_Gaming
-#define ALL_LAYERS_EXCEPT_BASE LAYER_Typing LAYER_Cursor LAYER_Number LAYER_Function LAYER_Symbol LAYER_Gaming
-#define ALL_LAYERS_WITH_DEFAULTS LAYER_QWERTY LAYER_Typing LAYER_Cursor LAYER_Number LAYER_Function LAYER_Symbol LAYER_Gaming LAYER_Factory LAYER_Lower LAYER_Magic
+#define LAYER_Mouse 7
+#define LAYER_Factory 8
+#define LAYER_Lower 9
+#define LAYER_Magic 10
+#define ALL_LAYERS LAYER_QWERTY LAYER_Typing LAYER_Cursor LAYER_Number LAYER_Function LAYER_Symbol LAYER_Gaming LAYER_Mouse
+#define ALL_LAYERS_EXCEPT_BASE LAYER_Typing LAYER_Cursor LAYER_Number LAYER_Function LAYER_Symbol LAYER_Gaming LAYER_Mouse
+#define ALL_LAYERS_WITH_DEFAULTS LAYER_QWERTY LAYER_Typing LAYER_Cursor LAYER_Number LAYER_Function LAYER_Symbol LAYER_Gaming LAYER_Mouse LAYER_Factory LAYER_Lower LAYER_Magic
 #pragma endregion Layers definitions
 
 #pragma region Glove80 standard behaviours and macros
@@ -655,7 +657,7 @@ macros {
             &kp EQUAL    &kp N1   &kp N2    &kp N3     &kp N4  &kp N5                                                                  &kp N6  &kp N7     &kp N8    &kp N9    &kp N0  &kp MINUS
               &kp TAB     &kp Q    &kp W     &kp E      &kp R   &kp T                                                                   &kp Y   &kp U      &kp I     &kp O     &kp P   &kp BSLH
               &kp ESC     &left_hrm LEFT_PINKY_MOD A  &left_hrm LEFT_RING1_MOD S  &left_hrm LEFT_MIDDY_MOD D  &left_hrm LEFT_INDEX_MOD F   &kp G                                                                   &kp H   &right_hrm RIGHT_INDEX_MOD J  &right_hrm RIGHT_MIDDY_MOD K  &right_hrm RIGHT_RING1_MOD L  &right_hrm RIGHT_PINKY_MOD SEMI   &kp SQT
-            &kp GRAVE     &kp Z    &kp X     &kp C      &kp V   &kp B  &thumb LAYER_Function ESC  &sk LSHIFT    &lower  &kp LGUI  &caps_word &kp TAB   &kp N   &kp M  &kp COMMA   &kp DOT  &kp FSLH  &kp LG(SPACE)
+            &kp GRAVE     &kp Z    &kp X     &kp C      &kp V   &kp B  &thumb LAYER_Function ESC  &thumb LAYER_Mouse    &lower  &kp LGUI  &caps_word &kp TAB   &kp N   &kp M  &kp COMMA   &kp DOT  &kp FSLH  &kp LG(SPACE)
  &magic LAYER_Magic 0  &kp HOME  &kp END  &kp LEFT  &kp RIGHT           &thumb LAYER_Cursor BACKSPACE    &thumb LAYER_Number DELETE  &thumb LAYER_Lower LALT  &thumb LAYER_Lower RALT    &kp RET  &thumb LAYER_Symbol SPACE          &kp UP   &kp DOWN  &kp LBKT  &kp RBKT  &kp PG_DN
             >;
         };
@@ -723,6 +725,17 @@ macros {
      &kp T    &kp TAB   &kp Q   &kp W   &kp E    &kp R                                                                             &kp T   &kp Y   &kp U      &kp I    &kp O     &kp P
      &kp G  &kp LSHFT   &kp A   &kp S   &kp D    &kp F    &kp ESC   &kp RET  &kp PAUSE_BREAK           &kp BSPC  &kp DEL  &trans   &kp G   &kp H   &kp J      &kp K    &kp L  &kp SEMI
      &kp V  &kp LCTRL   &kp Z   &kp X   &kp C           &kp SPACE  &kp LALT         &kp LGUI  &tog LAYER_Gaming   &trans  &trans          &trans  &trans     &trans   &trans    &trans
+            >;
+        };
+
+        layer_Mouse {
+            bindings = <
+ &trans              &trans              &trans              &trans              &trans                                                                                                                                                &trans               &trans               &trans               &trans  &trans
+ &trans              &trans              &trans              &trans              &trans         &trans                                                                                                            &trans               &trans               &trans               &trans               &trans  &trans
+ &trans              &trans              &trans              &trans              &trans         &trans                                                                                                            &mkp MB4            &mkp LCLK             &mmv MOVE_UP               &mkp RCLK              &msc SCRL_UP  &trans
+ &trans              &trans              &trans              &trans              &trans         &trans                                                                                                            &mkp MB5            &mmv MOVE_LEFT             &mmv MOVE_DOWN             &mmv MOVE_RIGHT            &msc SCRL_DOWN  &trans
+ &trans              &trans              &trans              &trans              &trans         &trans  &trans         &trans             &trans             &trans         &trans  &trans          &trans               &msc SCRL_LEFT               &mkp MCLK               &msc SCRL_RIGHT               &trans  &trans
+ &trans              &trans              &trans              &trans              &trans                 &trans         &trans             &trans             &trans         &trans  &trans                               &trans               &trans               &trans               &trans  &trans
             >;
         };
 
