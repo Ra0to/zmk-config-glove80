@@ -333,6 +333,13 @@ combos {
     };
     #endif
 
+    combo_sticky_shift {
+      timeout-ms = <COMBO_FIRING_DECAY>;
+      key-positions = <POS_LH_C3R4 POS_RH_C3R4>;
+      bindings = <&sk LSHIFT>;
+      layers = <0>;
+    };
+
     combo_public {
       timeout-ms = <COMBO_FIRING_DECAY>;
       key-positions = <POS_RH_C2R3 POS_RH_C5R3 POS_LH_C1R5>;
