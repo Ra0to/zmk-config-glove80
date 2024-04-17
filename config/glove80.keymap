@@ -54,6 +54,8 @@
     };
 };
 
+// Bindings should be (but it's doesn't compile):
+// = <&rgb_ug RGB_STATUS>;
 / {
     macros {
         rgb_ug_status_macro: rgb_ug_status_macro {
@@ -61,7 +63,7 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&rgb_ug RGB_STATUS>;
+                = <&none>;
         };
     };
 };
