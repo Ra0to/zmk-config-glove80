@@ -253,6 +253,8 @@
 #define WEAK_HOMEY_HOLDING_TIME (HOMEY_HOLDING_TIME+50)
 #define WEAK_HOMEY_STREAK_DECAY (HOMEY_STREAK_DECAY+50)
 #define STRONG_HOMEY_STREAK_DECAY (HOMEY_STREAK_DECAY-50)
+// Defines how long sticky key shoud be waiting for the next key
+#define SK_RELEASE_AFTER 1000
 
 //
 // OPERATING_SYSTEM defines which operating system you intend to use
@@ -340,7 +342,7 @@ combos {
     combo_sticky_shift {
       timeout-ms = <COMBO_FIRING_DECAY>;
       key-positions = <POS_LH_C3R4 POS_RH_C3R4>;
-      bindings = <&sk LSHIFT>;
+      bindings = <&skq LSHIFT>;
       layers = <0>;
     };
 
@@ -682,6 +684,15 @@ behaviors {
         bindings = <&mo>, <&caps_word>;
         retro-tap; // tap on standalone hold
     };
+
+    skq: sticky_key_quick_release {
+        compatible = "zmk,behavior-sticky-key";
+        #binding-cells = <1>;
+        bindings = <&kp>;
+        release-after-ms = <SK_RELEASE_AFTER>;
+        quick-release;
+        ignore-modifiers;
+      };
 };
 
 macros {
@@ -764,7 +775,7 @@ macros {
             bindings = <
       &none               &none               &none               &none               &none                                                                                                                &none       &none       &none          &none      &none
     &kp ESC             &kp RET           &kp SPACE             &kp TAB             &kp DEL  &kp INS                                                                                       &kp CARET    &kp DLLR    &kp HASH      &kp AT       &kp EXCL   &kp PIPE
-      &none           &sk LSHFT           &kp _REDO           &kp _UNDO            &kp BSPC    &kp A                                                                                       &kp PRCNT  &kp N7  &kp N8  &kp N9      &kp COLON      &kp K
+      &none           &skq LSHFT           &kp _REDO           &kp _UNDO            &kp BSPC    &kp A                                                                                       &kp PRCNT  &kp N7  &kp N8  &kp N9      &kp COLON      &kp K
  &kp KP_NUM  &kp LEFT_PINKY_MOD  &kp LEFT_RING1_MOD  &kp LEFT_MIDDY_MOD  &kp LEFT_INDEX_MOD    &kp B                                                                                    &kp PLUS  &kp N4  &kp N5  &kp N6  &kp MINUS      &kp J
       &none           &kp _C(A)               &none               &none           &kp UNDER    &kp C   &kp D   &kp E              &kp F         &kp LT       &kp GT  &kp EQUAL  &kp ASTERISK  &kp N1  &kp N2  &kp N3  &kp SLASH  &kp LS(G)
       &none               &none               &none               &none               &kp X            &none   &none  &tog LAYER_Number  &kp COMMA  &kp DOT     &kp N0                        &trans      &trans      &trans         &trans  &kp TILDE
@@ -775,7 +786,7 @@ macros {
             bindings = <
     &none               &none               &none               &none               &none                                                                                                                  &none         &none         &none          &none           &none
   &kp ESC             &kp RET           &kp SPACE             &kp TAB             &kp DEL  &kp INS                                                                               &kp C_MEDIA_HOME     &kp C_PLAY    &kp C_PREV    &kp C_NEXT     &kp C_STOP     &kp C_EJECT
-    &none           &sk LSHFT           &kp _REDO           &kp _UNDO            &kp BSPC    &none                                                                                      &kp K_WWW         &kp F7        &kp F8        &kp F9        &kp F10         &kp F13
+    &none           &skq LSHFT           &kp _REDO           &kp _UNDO            &kp BSPC    &none                                                                                      &kp K_WWW         &kp F7        &kp F8        &kp F9        &kp F10         &kp F13
  &kp CAPS  &kp LEFT_PINKY_MOD  &kp LEFT_RING1_MOD  &kp LEFT_MIDDY_MOD  &kp LEFT_INDEX_MOD    &none                                                                                     &kp K_CALC         &kp F4        &kp F5        &kp F6        &kp F11         &kp F14
     &none           &kp _C(A)               &none               &none               &none    &none   &none   &none                &none  &kp C_PREV    &kp C_NEXT      &kp C_PP    &kp C_AL_FILES         &kp F1        &kp F2        &kp F3        &kp F12         &kp F15
     &none               &none               &none               &none               &none            &none   &none  &tog LAYER_Function  &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP                    &kp C_BRI_MAX  &kp C_BRI_UP  &kp C_BRI_DN  &kp C_BRI_MIN  &kp C_BRI_AUTO
