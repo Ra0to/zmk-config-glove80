@@ -36,9 +36,3 @@ To locate your firmware files and reflash your Glove80...
 
 Your keyboard is now ready to use.
 
-## TODO
-
-1. Rebind T1 keys. Variants: esc, tab, caps word, sticky shift, smart numpad. How to press double shift in rider?
-2. Check timings for a streak.
-3. Refactor config. Get rid of too much configuration.
-4. Try to build the config with mouse support.
