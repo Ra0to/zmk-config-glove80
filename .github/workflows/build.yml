@@ -31,3 +31,4 @@ jobs:
           name: glove80.uf2
           path: glove80.uf2
           compression-level: 0
+          if-no-files-found: error
