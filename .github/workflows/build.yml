@@ -30,3 +30,4 @@ jobs:
         with:
           name: glove80.uf2
           path: glove80.uf2
+          compression-level: 0
