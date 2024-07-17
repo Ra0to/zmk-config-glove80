@@ -211,6 +211,11 @@
 #define RING1_FINGER_MOD LALT
 #define MIDDY_FINGER_MOD LSHFT
 #define INDEX_FINGER_MOD LGUI
+#if OPERATING_SYSTEM == 'M'
+    #define _LANG_CHANGE LC(SPACE)
+#else
+    #define _LANG_CHANGE LG(SPACE)
+#endif
 
 ////////////////////////////////////////////////////////////////////////////
 //
@@ -746,7 +751,7 @@ macros {
             &kp EQUAL    &kp N1   &kp N2    &kp N3     &kp N4  &kp N5                                                                  &kp N6  &kp N7     &kp N8    &kp N9    &kp N0  &kp MINUS
               &kp TAB     &kp Q    &kp W     &kp E      &kp R   &kp T                                                                   &kp Y   &kp U      &kp I     &kp O     &kp P   &kp BSLH
               &kp ESC     &weak_left_hrm LEFT_PINKY_MOD A  &weak_left_hrm LEFT_RING1_MOD S  &strong_left_hrm LEFT_MIDDY_MOD D  &left_hrm LEFT_INDEX_MOD F   &kp G                                                                   &kp H   &right_hrm RIGHT_INDEX_MOD J  &strong_right_hrm RIGHT_MIDDY_MOD K  &weak_right_hrm RIGHT_RING1_MOD L  &weak_right_hrm RIGHT_PINKY_MOD SEMI   &kp SQT
-            &kp GRAVE     &kp Z    &kp X     &kp C      &kp V   &kp B  &thumb LAYER_Function ESC  &thumb_caps_word LAYER_Mouse 0   &lower  &kp LGUI  &caps_word &kp TAB   &kp N   &kp M  &kp COMMA   &kp DOT  &kp FSLH  &kp LG(SPACE)
+            &kp GRAVE     &kp Z    &kp X     &kp C      &kp V   &kp B  &thumb LAYER_Function ESC  &thumb_caps_word LAYER_Mouse 0   &lower  &kp LGUI  &caps_word &kp TAB   &kp N   &kp M  &kp COMMA   &kp DOT  &kp FSLH  &kp _LANG_CHANGE
  &magic LAYER_Magic 0  &kp HOME  &kp END  &kp LEFT  &kp RIGHT           &thumb LAYER_Cursor BACKSPACE    &thumb LAYER_Number DELETE  &thumb LAYER_Lower LALT  &thumb LAYER_Lower RALT    &kp RET  &thumb LAYER_Symbol SPACE          &kp UP   &kp DOWN  &kp LBKT  &kp RBKT  &kp PG_DN
             >;
         };
