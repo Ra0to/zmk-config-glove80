@@ -373,14 +373,55 @@ combos {
         bindings = <&to LAYER_Typing>;
         layers = <LAYER_QWERTY>;
     };
+
+    combo_coma {
+      timeout-ms = <COMBO_FIRING_DECAY>;
+      key-positions = <POS_LH_C3R5 POS_LH_C2R5>;
+      bindings = <&insert_coma>;
+      layers = <0>;
+    };
+
+    combo_period {
+      timeout-ms = <COMBO_FIRING_DECAY>;
+      key-positions = <POS_RH_C3R5 POS_RH_C2R5>;
+      bindings = <&insert_period>;
+      layers = <0>;
+    };
 };
 
 behaviors {
+  ccomma: clean_comma {
+    compatible = "zmk,behavior-mod-morph";
+    #binding-cells = <0>;
+    bindings = <&kp COMMA>, <&kp COMMA>;
+    mods = <(MOD_LSFT)>;
+  }; 
+
+  cperiod: clean_period {
+    compatible = "zmk,behavior-mod-morph";
+    #binding-cells = <0>;
+    bindings = <&kp PERIOD>, <&kp PERIOD>;
+    mods = <(MOD_LSFT)>;
+  }; 
+
   type_public: type_public {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&macro_tap &kp P &kp U &kp B &kp L &kp I &kp C>;
-        };
+    compatible = "zmk,behavior-macro";
+    #binding-cells = <0>;
+    bindings = <&macro_tap &kp P &kp U &kp B &kp L &kp I &kp C>;
+  };
+
+  insert_coma: insert_coma {
+    compatible = "zmk,behavior-macro";
+    #binding-cells = <0>;
+    bindings = <&macro_tap &ccomma>;
+  };
+
+  insert_period: insert_period {
+    compatible = "zmk,behavior-macro";
+    #binding-cells = <0>;
+    bindings = <&macro_tap &cperiod>;
+  };
+
 #pragma region homerow modes fingers configuration
     //////////////////////////////////////////////////////////////////////////
     //
@@ -785,7 +826,7 @@ macros {
       &none           &skq LSHFT           &kp _REDO           &kp _UNDO            &kp BSPC    &kp A                                                                                       &kp PRCNT  &kp N7  &kp N8  &kp N9      &kp COLON      &kp K
  &kp KP_NUM  &kp LEFT_PINKY_MOD  &kp LEFT_RING1_MOD  &kp LEFT_MIDDY_MOD  &kp LEFT_INDEX_MOD    &kp B                                                                                    &kp PLUS  &kp N4  &kp N5  &kp N6  &kp MINUS      &kp J
       &none           &kp _C(A)               &none               &none           &kp UNDER    &kp C   &kp D   &kp E              &kp F         &kp LT       &kp GT  &kp EQUAL  &kp ASTERISK  &kp N1  &kp N2  &kp N3  &kp SLASH  &kp LS(G)
-      &none               &none               &none               &none               &kp X            &none   &none  &tog LAYER_Number  &kp COMMA  &kp DOT     &kp N0                        &trans      &trans      &trans         &trans  &kp TILDE
+      &none               &none               &none               &none               &kp X            &none   &none  &tog LAYER_Number  &ccomma  &cperiod     &kp N0                        &trans      &trans      &trans         &trans  &kp TILDE
             >;
         };
 
