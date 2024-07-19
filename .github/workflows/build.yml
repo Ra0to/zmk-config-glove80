@@ -30,5 +30,4 @@ jobs:
         with:
           name: glove80_${{ github.run_id }}.uf2
           path: glove80.uf2
-          compression-level: 0
           if-no-files-found: error
