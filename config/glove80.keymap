@@ -408,6 +408,13 @@ combos {
       layers = <0>;
     };
 
+    combo_public {
+      timeout-ms = <COMBO_FIRING_DECAY>;
+      key-positions = <POS_RH_C2R3 POS_RH_C5R3 POS_LH_C1R5>;
+      bindings = <&type_public>;
+      layers = <0>;
+    };
+
     combo_to_base_layer {
         timeout-ms = <COMBO_FIRING_DECAY>;
         key-positions = <POS_LH_T4 POS_RH_T4>;
@@ -435,6 +442,13 @@ combos {
       bindings = <&insert_period>;
       layers = <0>;
     };
+
+    combo_test {
+        timeout-ms = <COMBO_FIRING_DECAY>;
+        key-positions = <POS_RH_C2R6 POS_RH_C3R6>;
+        bindings = <&type_test>;
+        layers = <0>;
+    };
 };
 
 behaviors {
@@ -452,6 +466,12 @@ behaviors {
     mods = <(MOD_LSFT)>;
   }; 
 
+  type_public: type_public {
+    compatible = "zmk,behavior-macro";
+    #binding-cells = <0>;
+    bindings = <&macro_tap &kp P &kp U &kp B &kp L &kp I &kp C>;
+  };
+
   insert_coma: insert_coma {
     compatible = "zmk,behavior-macro";
     #binding-cells = <0>;
@@ -462,6 +482,15 @@ behaviors {
     compatible = "zmk,behavior-macro";
     #binding-cells = <0>;
     bindings = <&macro_tap &cperiod>;
+  };
+
+  type_test: type_test {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings =
+        <&macro_press &kp LALT>,
+        <&macro_tap &kp N0 &kp N4 &kp N4 &kp N8>,
+        <&macro_release &kp LALT>;
   };
 
 #pragma region homerow modes fingers configuration
