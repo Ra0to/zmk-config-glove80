@@ -261,11 +261,14 @@
 /* Custom Defined Behaviors */
 / {
 #define DIFFICULTY_LEVEL 4 // 0:custom, 1:easy -> 5:hard (see below)
-#define OPERATING_SYSTEM 'M' // windows
+#define OPERATING_SYSTEM 'M' // mac
 #define PINKY_FINGER_MOD LCTL
 #define RING1_FINGER_MOD LALT
 #define MIDDY_FINGER_MOD LSHFT
 #define INDEX_FINGER_MOD LGUI
+// Default for lvl 4 is (((6 - 4) *  50) + 100) = 200
+// Default for lvl 5 is (((6 - 5) *  50) + 100) = 200
+#define HOMEY_STREAK_DECAY 175
 #if OPERATING_SYSTEM == 'M'
     #define _LANG_CHANGE LC(SPACE)
 #else
