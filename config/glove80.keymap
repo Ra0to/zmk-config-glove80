@@ -260,8 +260,8 @@
 
 /* Custom Defined Behaviors */
 / {
-#define DIFFICULTY_LEVEL 5 // 0:custom, 1:easy -> 5:hard (see below)
-#define OPERATING_SYSTEM 'M' // mac
+#define DIFFICULTY_LEVEL 4 // 0:custom, 1:easy -> 5:hard (see below)
+#define OPERATING_SYSTEM 'M' // windows
 #define PINKY_FINGER_MOD LCTL
 #define RING1_FINGER_MOD LALT
 #define MIDDY_FINGER_MOD LSHFT
