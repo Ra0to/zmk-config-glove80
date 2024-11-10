@@ -267,8 +267,10 @@
 #define MIDDY_FINGER_MOD LSHFT
 #define INDEX_FINGER_MOD LGUI
 // Default for lvl 4 is (((6 - 4) *  50) + 100) = 200
-// Default for lvl 5 is (((6 - 5) *  50) + 100) = 200
+// Default for lvl 5 is (((6 - 5) *  50) + 100) = 150
 #define HOMEY_STREAK_DECAY 175
+#define WEAK_HOMEY_STREAK_DECAY (HOMEY_STREAK_DECAY+25)
+
 #if OPERATING_SYSTEM == 'M'
     #define _LANG_CHANGE LC(SPACE)
 #else
@@ -315,9 +317,16 @@
 #endif
 #endif
 
+#ifndef WEAK_HOMEY_HOLDING_TIME
 #define WEAK_HOMEY_HOLDING_TIME (HOMEY_HOLDING_TIME+50)
+#endif
+#ifndef WEAK_HOMEY_STREAK_DECAY
 #define WEAK_HOMEY_STREAK_DECAY (HOMEY_STREAK_DECAY+50)
+#endif
+#ifndef STRONG_HOMEY_STREAK_DECAY
 #define STRONG_HOMEY_STREAK_DECAY (HOMEY_STREAK_DECAY-50)
+#endif
+
 // Defines how long sticky key shoud be waiting for the next key
 #define SK_RELEASE_AFTER 1000
 
