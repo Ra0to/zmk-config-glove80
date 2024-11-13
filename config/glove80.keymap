@@ -434,17 +434,17 @@ combos {
         layers = <LAYER_QWERTY>;
     };
 
-    combo_coma {
+    combo_comma {
       timeout-ms = <COMBO_FIRING_DECAY>;
       key-positions = <POS_LH_C3R5 POS_LH_C2R5>;
-      bindings = <&insert_coma>;
+      bindings = <&kp KP_COMMA>;
       layers = <0>;
     };
 
     combo_period {
       timeout-ms = <COMBO_FIRING_DECAY>;
       key-positions = <POS_RH_C3R5 POS_RH_C2R5>;
-      bindings = <&insert_period>;
+      bindings = <&kp KP_DOT>;
       layers = <0>;
     };
 
@@ -464,18 +464,6 @@ behaviors {
     bindings = <&kp PERIOD>, <&kp PERIOD>;
     mods = <(MOD_LSFT)>;
   }; 
-
-  insert_coma: insert_coma {
-    compatible = "zmk,behavior-macro";
-    #binding-cells = <0>;
-    bindings = <&macro_tap &ccomma>;
-  };
-
-  insert_period: insert_period {
-    compatible = "zmk,behavior-macro";
-    #binding-cells = <0>;
-    bindings = <&macro_tap &cperiod>;
-  };
 
 #pragma region homerow modes fingers configuration
     //////////////////////////////////////////////////////////////////////////
