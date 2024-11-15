@@ -1,3 +1,5 @@
+// # vim:foldmethod=marker:foldmarker=#pragma\ region,#pragma\ endregion
+
 /*
  * Copyright (c) 2020 The ZMK Contributors
  * Copyright (c) 2023 Innaworks Development Limited, trading as MoErgo
