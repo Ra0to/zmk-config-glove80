@@ -405,13 +405,6 @@ combos {
     };
     #endif
 
-    combo_sticky_shift {
-      timeout-ms = <COMBO_FIRING_DECAY>;
-      key-positions = <POS_LH_C3R4 POS_RH_C3R4>;
-      bindings = <&skq LSHIFT>;
-      layers = <0>;
-    };
-
     combo_to_base_layer {
         timeout-ms = <COMBO_FIRING_DECAY>;
         key-positions = <POS_LH_T4 POS_RH_T4>;
@@ -424,20 +417,6 @@ combos {
         key-positions = <POS_LH_T4 POS_RH_T4>;
         bindings = <&to LAYER_Typing>;
         layers = <LAYER_Base>;
-    };
-
-    combo_comma {
-      timeout-ms = <COMBO_FIRING_DECAY>;
-      key-positions = <POS_LH_C3R5 POS_LH_C2R5>;
-      bindings = <&kp COMMA>;
-      layers = <0>;
-    };
-
-    combo_period {
-      timeout-ms = <COMBO_FIRING_DECAY>;
-      key-positions = <POS_RH_C3R5 POS_RH_C2R5>;
-      bindings = <&kp DOT>;
-      layers = <0>;
     };
 
 };
