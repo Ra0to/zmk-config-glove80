@@ -270,7 +270,7 @@
 #define INDEX_FINGER_MOD LGUI
 // Default for lvl 4 is (((6 - 4) *  50) + 100) = 200
 // Default for lvl 5 is (((6 - 5) *  50) + 100) = 150
-#define HOMEY_STREAK_DECAY 175
+#define HOMEY_STREAK_DECAY 150
 #define WEAK_HOMEY_STREAK_DECAY (HOMEY_STREAK_DECAY+15)
 
 #if OPERATING_SYSTEM == 'M'
